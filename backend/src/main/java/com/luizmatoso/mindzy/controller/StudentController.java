@@ -10,7 +10,6 @@ import com.luizmatoso.mindzy.service.AIService;
 
 @RestController
 public class StudentController {
-
     private final AIService aiService;
 
     public StudentController(AIService aiService){
