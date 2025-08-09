@@ -17,7 +17,7 @@ public class StudentController {
         this.aiService = aiService;
     }
 
-        @GetMapping("/flashcards")
+    @GetMapping("/flashcards")
     public Map<String, String> generateFlashcards(@RequestParam String topic){
         String prompt = "Faça flashcards rápidos e pequenos sobre " + topic.toUpperCase();
         return Map.of("response", aiService.run(prompt));
