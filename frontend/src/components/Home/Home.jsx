@@ -52,15 +52,10 @@ const Home = ({
           </button>
         </div>
       </form>
-      <h3 className="mt-5 text-3xl">Sua resposta:</h3>
-      {/* {answer && ( */}
-      <div className="mt-5 p-4 bg-white rounded whitespace-pre-wrap text-2xl">
-        O código é um sistema de respostas curtas que determina o sinal do
-        número. Se o número é positivo, ele printará "O número é positivo.". Se
-        o número é zero, ele printará "O número é zero.". Se o número é
-        negativo, ele printará "O número é negativo.
-      </div>
-      {/* )} */}
+
+      {answer && (
+          <h3 className="mt-5 text-3xl text-white">Sua resposta:</h3>
+        ) && { answer }}
     </div>
   );
 };
