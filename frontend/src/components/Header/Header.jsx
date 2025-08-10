@@ -8,17 +8,21 @@ const Header = ({ selected, onSelect }) => {
       <h2 className="text-5xl text-white p-4 pl-12">Mindzy</h2>
       <div className="flex gap-6">
         {options.map((option) => (
-          <button
-            key={option}
-            onClick={() => onSelect(option)}
-            className={`px-8 py-2 rounded-3xl cursor-pointer ${
-              selected === option
-                ? "bg-gradient-to-l from-[#06b6d4] via-[#0d9488] to-[#15803d] text-white"
-                : "text-white border border-zinc-700"
-            }`}
-          >
-            {option}
-          </button>
+          <div key={option} className="relative">
+            {selected === option && (
+              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-600 via-teal-600 to-sky-600 opacity-75 blur-2xl"></div>
+            )}
+            <button
+              onClick={() => onSelect(option)}
+              className={`relative px-8 py-2 rounded-3xl cursor-pointer transition-all ${
+                selected === option
+                  ? "bg-gradient-to-l from-[#06b6d4] via-[#0d9488] to-[#15803d] text-white"
+                  : "text-white border border-zinc-700 bg-zinc-900"
+              }`}
+            >
+              {option}
+            </button>
+          </div>
         ))}
       </div>
     </div>
