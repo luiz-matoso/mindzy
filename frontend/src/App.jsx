@@ -2,11 +2,26 @@ import { useState } from "react";
 import "./App.css";
 import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
+import SubCategorySelector from "./components/Header/SubCategorySelector";
 
 function App() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+
   const [selectedCategory, setSelectedCategory] = useState("Para estudantes");
+  const [selectedSubcategory, setSelectedSubCategory] = useState("Flashcards");
+
+  function handleCategoryChange(newCategory) {
+    setSelectedCategory(newCategory);
+
+    const firstSubcat = {
+      "Para estudantes": "Flashcards",
+      Tecnologia: "Debugging",
+      Diversão: "Memes",
+    }[newCategory];
+
+    setSelectedSubCategory(firstSubcat);
+  }
 
   async function handleSumbit(e) {
     e.preventDefault();
@@ -24,7 +39,13 @@ function App() {
 
   return (
     <>
-      <Header selected={selectedCategory} onSelect={setSelectedCategory} />
+      <Header selected={selectedCategory} onSelect={handleCategoryChange} />
+
+      <SubCategorySelector
+        category={selectedCategory}
+        selectedSubcategory={selectedSubcategory}
+        onSelectSubcategory={setSelectedSubCategory}
+      />
       <Home
         question={question}
         setQuestion={setQuestion}

@@ -3,7 +3,6 @@ import React from "react";
 const Home = ({ question, setQuestion, answer, handleSumbit }) => {
   return (
     <div className="max-w-[600px] m-auto p-[20px]">
-      <h2>Mindzy</h2>
       <form onSubmit={handleSumbit}>
         <textarea
           className="w-full p-[20px]
