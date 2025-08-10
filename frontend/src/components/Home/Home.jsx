@@ -1,9 +1,18 @@
 import React from "react";
 
-const Home = ({ question, setQuestion, answer, handleSumbit }) => {
+const Home = ({
+  question,
+  setQuestion,
+  answer,
+  handleSumbit,
+  placeholder,
+  description,
+  buttonText,
+}) => {
   return (
     <div className="max-w-[600px] m-auto p-[20px]">
       <form onSubmit={handleSumbit}>
+        <p>{description}</p>
         <textarea
           className="w-full p-[20px]
           resize-none
@@ -16,13 +25,13 @@ const Home = ({ question, setQuestion, answer, handleSumbit }) => {
           rows={6}
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          placeholder="Digite sua pergunta ou código aqui..."
+          placeholder={placeholder}
         />
         <button
           type="submit"
           className="bg-gradient-to-l from-[#06b6d4] via-[#0d9488] to-[#15803d] px-4 py-2 rounded cursor-pointer mt-px-10"
         >
-          Enviar
+          {buttonText}
         </button>
       </form>
       {answer && (

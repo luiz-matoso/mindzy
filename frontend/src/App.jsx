@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
 import SubCategorySelector from "./components/Header/SubCategorySelector";
+import config from "./utils/config";
+
+import {
+  explainCode,
+  generateFlashcards,
+  summarizeText,
+  explainSubject,
+} from "./api/aiService";
 
 function App() {
   const [question, setQuestion] = useState("");
@@ -11,12 +19,32 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState("Para estudantes");
   const [selectedSubcategory, setSelectedSubCategory] = useState("Flashcards");
 
+  const [placeholder, setPlaceholder] = useState("");
+  const [description, setDescription] = useState("");
+  const [buttonText, setButtonText] = useState("");
+
+  function updateTexts(category, subcategory) {
+    const categoryData = config[category];
+    if (categoryData) {
+      const subcatData = categoryData[subcategory];
+      if (subcatData) {
+        setPlaceholder(subcatData.placeholder);
+        setDescription(subcatData.description);
+        setButtonText(subcatData.buttonText);
+      }
+    }
+  }
+
+  useEffect(() => {
+    updateTexts(selectedCategory, selectedSubcategory);
+  }, [selectedCategory, selectedSubcategory]);
+
   function handleCategoryChange(newCategory) {
     setSelectedCategory(newCategory);
 
     const firstSubcat = {
       "Para estudantes": "Flashcards",
-      Tecnologia: "Debugging",
+      Tecnologia: "Explicar código",
       Diversão: "Memes",
     }[newCategory];
 
@@ -25,22 +53,34 @@ function App() {
 
   async function handleSumbit(e) {
     e.preventDefault();
+    console.log("handleSumbit chamado");
     if (!question.trim()) return;
 
-    const response = await fetch("http://localhost:8080/explainCode", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question }),
-    });
+    try {
+      let data;
 
-    const data = await response.json();
-    setAnswer(data.response);
+      if (selectedCategory === "Para estudantes") {
+        if (selectedSubcategory === "Flashcards") {
+          data = await generateFlashcards(question);
+        } else if (selectedSubcategory === "Resumo") {
+          data = await summarizeText(question);
+        } else if (selectedSubcategory === "Explicação") {
+          data = await explainSubject(question);
+        }
+      } else if (selectedCategory === "Tecnologia") {
+        if (selectedSubcategory === "Explicar código") {
+          data = await explainCode(question);
+        }
+      }
+      setAnswer(data.response);
+    } catch (error) {
+      console.error("API call failed:", error);
+    }
   }
 
   return (
     <>
       <Header selected={selectedCategory} onSelect={handleCategoryChange} />
-
       <SubCategorySelector
         category={selectedCategory}
         selectedSubcategory={selectedSubcategory}
@@ -51,6 +91,9 @@ function App() {
         setQuestion={setQuestion}
         answer={answer}
         handleSumbit={handleSumbit}
+        placeholder={placeholder}
+        description={description}
+        buttonText={buttonText}
       />
     </>
   );
