@@ -22,7 +22,7 @@ const Home = ({
   return (
     <div className="max-w-[800px] m-auto p-[20px]">
       <form onSubmit={handleSumbit}>
-        <p>{description}</p>
+        <p className="text-2xl mt-4 mb-4 text-gray-500">{description}</p>
         <textarea
           ref={textareaRef}
           className="w-full p-4
