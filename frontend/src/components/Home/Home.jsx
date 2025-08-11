@@ -93,7 +93,7 @@ const Home = ({
               <div className="absolute -z-10 -inset-2 rounded-xl bg-gradient-to-r from-yellow-500/30 via-teal-500/30 to-sky-500/30 opacity-70 blur-lg"></div>
               <h3 className="text-2xl text-gray-500">Resultado:</h3>
               <div className="mt-1 p-4 text-gray-500 rounded whitespace-pre-wrap text-2xl">
-                {answer}
+                {answer.replace(/^```python|```$/gm, "").trim()}
               </div>
             </div>
           </div>

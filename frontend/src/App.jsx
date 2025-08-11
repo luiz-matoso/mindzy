@@ -10,6 +10,7 @@ import {
   generateFlashcards,
   summarizeText,
   explainSubject,
+  createCode,
 } from "./api/aiService";
 
 function App() {
@@ -70,6 +71,8 @@ function App() {
       } else if (selectedCategory === "Tecnologia") {
         if (selectedSubcategory === "Explicar código") {
           data = await explainCode(question);
+        } else if (selectedSubcategory === "Criar código") {
+          data = await createCode(question);
         }
       }
       setAnswer(data.response);

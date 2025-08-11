@@ -11,6 +11,15 @@ export async function explainCode(question) {
   return response.json();
 }
 
+export async function createCode(question) {
+  const response = await fetch(`${BASE_URL}/createCode`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question }),
+  });
+  return response.json();
+}
+
 // StudentController...
 
 export async function generateFlashcards(question) {
