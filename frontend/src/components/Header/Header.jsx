@@ -5,7 +5,9 @@ const Header = ({ selected, onSelect }) => {
 
   return (
     <div className="flex flex-col items-center gap-6 py-12">
-      <h2 className="text-5xl text-white p-4 pl-12">Mindzy</h2>
+      <h2 className="text-5xl bg-gradient-to-r from-purple-500 via-teal-500 to-red-500 text-transparent bg-clip-text p-4 pl-12 animate-gradient">
+        Mindzy
+      </h2>
       <div className="flex gap-6">
         {options.map((option) => (
           <div key={option} className="relative">

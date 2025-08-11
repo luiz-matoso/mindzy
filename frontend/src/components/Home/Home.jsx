@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Home = ({
   question,
@@ -11,6 +11,13 @@ const Home = ({
 }) => {
   const textareaRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setQuestion("");
+    if (textareaRef.current) {
+      textareaRef.current.focus();
+    }
+  }, [placeholder]);
 
   async function handleSubmitWithLoading(e) {
     e.preventDefault();
@@ -33,24 +40,25 @@ const Home = ({
     <div className="max-w-[800px] m-auto p-[20px]">
       <form onSubmit={handleSubmitWithLoading}>
         <p className="text-2xl mt-8 mb-4 text-gray-500">{description}</p>
-        <textarea
-          ref={textareaRef}
-          className="w-full p-4
+        <div className="bg-neutral-900 rounded-3xl">
+          <textarea
+            ref={textareaRef}
+            className="w-full p-4
           resize-none
           border-none outline-none 
           placeholder:text-center 
           text-2xl 
           text-center
-          bg-transparent
           bg-gradient-to-r from-purple-500 via-teal-500 to-red-500 text-transparent bg-clip-text
           min-h-[40px]
           max-h-[300px]
           overflow-y-auto"
-          rows={1}
-          value={question}
-          onChange={handleChange}
-          placeholder={placeholder}
-        />
+            rows={1}
+            value={question}
+            onChange={handleChange}
+            placeholder={placeholder}
+          />
+        </div>
 
         <div className="relative inline-block">
           <div className="mt-5 absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-500 via-teal-500 to-sky-500 opacity-40 blur-2xl"></div>

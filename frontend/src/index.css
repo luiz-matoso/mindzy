@@ -8,3 +8,21 @@
 body {
   background-color: #0c0c0c;
 }
+
+.animate-gradient {
+  background: linear-gradient(135deg, #a855f7, #14b8a6, #ef4444);
+  background-size: 200%;
+  background-clip: text;
+  color: transparent;
+  animation: gradient 2s ease infinite;
+}
+
+@keyframes gradient {
+  0%,
+  100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+}
