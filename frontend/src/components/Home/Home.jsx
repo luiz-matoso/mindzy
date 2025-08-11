@@ -39,7 +39,7 @@ const Home = ({
           resize-none
           border-none outline-none 
           placeholder:text-center 
-          text-3xl 
+          text-2xl 
           text-center
           bg-transparent
           bg-gradient-to-r from-purple-500 via-teal-500 to-red-500 text-transparent bg-clip-text
