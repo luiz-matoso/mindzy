@@ -2,10 +2,7 @@ package com.luizmatoso.mindzy.controller;
 
 import java.util.Map;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.luizmatoso.mindzy.service.AIService;
 
@@ -18,19 +15,19 @@ public class StudentController {
     }
 
     @PostMapping("/flashcards")
-    public Map<String, String> generateFlashcards(@RequestParam String topic){
+    public Map<String, String> generateFlashcards(@RequestBody String topic){
         String prompt = "Faça flashcards rápidos e pequenos sobre " + topic.toUpperCase();
         return Map.of("response", aiService.run(prompt));
     }
 
     @PostMapping("/resumo")
-    public Map<String, String> summarizeText(@RequestParam String text){
+    public Map<String, String> summarizeText(@RequestBody String text){
         String prompt = "Faça um breve resumo desse texto: " + text;
         return Map.of("response", aiService.run(prompt));
     }
 
     @PostMapping("/explicar")
-    public Map<String, String> explainSubject(@RequestParam String subject){
+    public Map<String, String> explainSubject(@RequestBody String subject){
         String prompt = "Faça uma breve explicação detalhada sobre " + subject;
         return Map.of("response", aiService.run(prompt));
     }
