@@ -16,7 +16,7 @@ public class StudentController {
 
     @PostMapping("/flashcards")
     public Map<String, String> generateFlashcards(@RequestBody String topic){
-        String prompt = "Faça flashcards rápidos e pequenos sobre " + topic.toUpperCase();
+        String prompt = "Faça flashcards rápidos e pequenos em tópicos enumerados sobre " + topic;
         return Map.of("response", aiService.run(prompt));
     }
 

@@ -24,4 +24,10 @@ public class TechController {
         return Map.of("response", aiService.run(prompt));
     }
 
+    @PostMapping("/createCode")
+    public Map<String, String> createCode(@RequestBody String codeDetails){
+        String prompt = "Crie um código simples conforme o pedido a seguir " + codeDetails;
+        return Map.of("response", aiService.run(prompt));
+    }
+
 }
