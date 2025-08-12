@@ -3,7 +3,7 @@ import React from "react";
 const subcategoriesByCategory = {
   "Para estudantes": ["Flashcards", "Resumo", "Explicação"],
   Tecnologia: ["Explicar código", "Criar código"],
-  Diversão: ["Memes", "Jogos", "Curiosidades"],
+  Diversão: ["Piadas", "Curiosidades"],
 };
 
 const SubCategorySelector = ({

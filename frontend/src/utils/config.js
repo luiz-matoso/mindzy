@@ -35,8 +35,7 @@ const config = {
       buttonText: "Criar piadas",
     },
     Curiosidades: {
-      placeholder:
-        "Digite um tema ou uma  figura pública que quer curiosidades...",
+      placeholder: "Digite um tema que quer curiosidades...",
       description: "Conheça curiosidades sobre tema ou figura pública.",
       buttonText: "Conhecer curiosidades",
     },
