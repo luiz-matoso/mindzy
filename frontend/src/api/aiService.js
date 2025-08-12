@@ -48,3 +48,23 @@ export async function explainSubject(question) {
   });
   return response.json();
 }
+
+// FunController
+
+export async function generateJokes(question) {
+  const response = await fetch(`${BASE_URL}/jokes`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question }),
+  });
+  return response.json();
+}
+
+export async function generateCuriosities(question) {
+  const response = await fetch(`${BASE_URL}/curiosidade`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question }),
+  });
+  return response.json();
+}
