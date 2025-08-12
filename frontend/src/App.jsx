@@ -11,6 +11,8 @@ import {
   summarizeText,
   explainSubject,
   createCode,
+  generateJokes,
+  generateCuriosities,
 } from "./api/aiService";
 
 function App() {
@@ -46,7 +48,7 @@ function App() {
     const firstSubcat = {
       "Para estudantes": "Flashcards",
       Tecnologia: "Explicar código",
-      Diversão: "Memes",
+      Diversão: "Piadas",
     }[newCategory];
 
     setSelectedSubCategory(firstSubcat);
@@ -73,6 +75,12 @@ function App() {
           data = await explainCode(question);
         } else if (selectedSubcategory === "Criar código") {
           data = await createCode(question);
+        }
+      } else if (selectedCategory === "Diversão") {
+        if (selectedSubcategory === "Piadas") {
+          data = await generateJokes(question);
+        } else if (selectedSubcategory === "Curiosidades") {
+          data = await generateCuriosities(question);
         }
       }
       setAnswer(data.response);

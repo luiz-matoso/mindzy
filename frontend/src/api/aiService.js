@@ -61,7 +61,7 @@ export async function generateJokes(question) {
 }
 
 export async function generateCuriosities(question) {
-  const response = await fetch(`${BASE_URL}/curiosidade`, {
+  const response = await fetch(`${BASE_URL}/curiosidades`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ question }),
