@@ -2,6 +2,7 @@ import React from "react";
 
 const Header = ({ selected, onSelect }) => {
   const options = ["Para estudantes", "Tecnologia", "Diversão"];
+  const newBadges = ["Tecnologia", "Diversão"];
 
   return (
     <div className="flex flex-col items-center gap-6 py-12">
@@ -23,6 +24,11 @@ const Header = ({ selected, onSelect }) => {
               }`}
             >
               {option}
+              {newBadges.includes(option) && (
+                <span className="absolute -top-2 bg-gradient-to-r from-[#fde68a]  to-[#f59e0b] text-black text-xs font-sm px-2.5 py-0.5 rounded-xl">
+                  NEW
+                </span>
+              )}
             </button>
           </div>
         ))}

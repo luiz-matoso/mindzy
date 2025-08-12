@@ -6,6 +6,14 @@ const subcategoriesByCategory = {
   Diversão: ["Piadas", "Curiosidades"],
 };
 
+const newBadges = [
+  "Explicação",
+  "Explicar código",
+  "Criar código",
+  "Piadas",
+  "Curiosidades",
+];
+
 const SubCategorySelector = ({
   category,
   selectedSubcategory,
@@ -30,6 +38,11 @@ const SubCategorySelector = ({
             }`}
           >
             {subcat}
+            {newBadges.includes(subcat) && (
+              <span className="absolute -top-2 bg-gradient-to-r from-[#fde68a]  to-[#f59e0b] text-black text-xs font-sm px-2.5 py-0.5 rounded-xl">
+                NEW
+              </span>
+            )}
           </button>
         </div>
       ))}
