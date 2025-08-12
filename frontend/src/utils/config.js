@@ -2,42 +2,43 @@ const config = {
   "Para estudantes": {
     Flashcards: {
       placeholder: "Digite o assunto para criar flashcards...",
-      description: "Aqui você cria flashcards para estudar melhor.",
-      buttonText: "Criar Flashcards",
+      description: "Crie flashcards para melhorar seu estudo.",
+      buttonText: "Criar flashcards",
     },
     Resumo: {
       placeholder: "Cole seu texto para gerar um resumo...",
       description: "Resuma textos longos rapidamente.",
-      buttonText: "Gerar Resumo",
+      buttonText: "Gerar resumo",
     },
     Explicação: {
       placeholder: "Digite o conteúdo para explicação simples...",
       description: "Obtenha uma explicação clara e rápida.",
-      buttonText: "Gerar Explicação",
+      buttonText: "Gerar explicação",
     },
   },
   Tecnologia: {
     "Explicar código": {
       placeholder: "Cole seu código...",
-      description: "Aqui você irá entender o que esse código faz.",
+      description: "Entenda o que o código colado faz.",
       buttonText: "Enteder código",
     },
     "Criar código": {
       placeholder: "Digite o que seu código irá fazer...",
-      description:
-        "Aqui você irá gerar um código de acordo com suas especificações.",
+      description: "Gere códigos de acordo com suas especificações.",
       buttonText: "Gerar código",
     },
   },
   Diversão: {
-    Memes: {
-      /* ... */
-    },
-    Jogos: {
-      /* ... */
+    Piadas: {
+      placeholder: "Digite um tema para criar piadas...",
+      description: "Crie piadas com um tema específico.",
+      buttonText: "Criar piadas",
     },
     Curiosidades: {
-      /* ... */
+      placeholder:
+        "Digite um tema ou uma  figura pública que quer curiosidades...",
+      description: "Conheça curiosidades sobre tema ou figura pública.",
+      buttonText: "Conhecer curiosidades",
     },
   },
 };
