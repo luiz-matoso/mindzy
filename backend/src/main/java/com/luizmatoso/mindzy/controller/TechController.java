@@ -18,15 +18,24 @@ public class TechController {
         this.aiService = aiService;
     }
 
-    @PostMapping("/explainCode")
+    // Prompts
+    String explicarCodigo = """
+            Explique o que o código a seguir realiza de uma maneira simples e rápida:
+            """;
+
+    String criarCodigo = """
+            Crie um código em Python conforme os detalhes a seguir:
+            """;
+
+    @PostMapping("/explicarCodigo")
     public Map<String, String> explainCode(@RequestBody String code) {
-        String prompt = "Explique o que esse código faz de uma maneira simples e rápida: " + code;
+        String prompt = explicarCodigo + code;
         return Map.of("response", aiService.run(prompt));
     }
 
-    @PostMapping("/createCode")
+    @PostMapping("/criarCodigo")
     public Map<String, String> createCode(@RequestBody String codeDetails){
-        String prompt = "Crie um código simples conforme o pedido a seguir " + codeDetails;
+        String prompt = criarCodigo + codeDetails;
         return Map.of("response", aiService.run(prompt));
     }
 

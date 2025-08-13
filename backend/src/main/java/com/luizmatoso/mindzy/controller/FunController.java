@@ -16,15 +16,26 @@ public class FunController {
         this.aiService = aiService;
     }
 
-    @PostMapping("/jokes")
+    // Prompts
+    String piadas = """
+            Você deve enumerar as piadas de 1 ao 3.
+            Gere 3 piadas com o tema sugerido a seguir:
+            """;
+
+    String curiosidades = """
+            Você deve enumerar as curiosidades de 1 ao 3.
+            Busque 3 curiosidades sobre o tema ou fígura pública sugerido a seguir:
+            """;
+
+    @PostMapping("/piadas")
     public Map<String, String> generateJokes(@RequestBody String topic){
-        String prompt = "Gere 3 piadas com o tema a seguir: " + topic;
+        String prompt = piadas + topic;
         return Map.of("response", aiService.run(prompt));
     }
 
     @PostMapping("/curiosidades")
     public Map<String, String> generateCuriosities(@RequestBody String topic){
-        String prompt = "Gere 3 curiosidades sobre " + topic;
+        String prompt = curiosidades + topic;
         return Map.of("response", aiService.run(prompt));
     }
 }

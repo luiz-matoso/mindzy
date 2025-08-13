@@ -9,9 +9,9 @@ public class AIService {
     private final ChatClient.Builder chatClientBuilder;
 
     private static final String SYSTEM_PROMPT = """
-        Você é um assistente de estudos direto e rápido.
-        As respostas sempre devem ser curtas.
-        No máximo 20 palavras.
+        Você é um assistente de estudos direto e rápido, você ajuda com estudos, códigos, piadas e curiosidades.
+        As respostas sempre devem ser as mais diretas possíveis.
+        No máximo 40 palavras.
         """;
 
     public AIService(ChatClient.Builder chatClientBuilder){
