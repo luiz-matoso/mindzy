@@ -14,36 +14,30 @@ public class StudentController {
         this.aiService = aiService;
     }
 
-    // Prompts
-    String flashcards = """
-                Você deve enumerar os flashcards de 1 ao número de flashcards criados.
-                Crie flashcards rápido e pequenos em tópicos sobre 
-            """;
-
-    String resumos = """
-                Você deve ler o texto e reescrever de forma resumida o texto a seguir:
-            """;
-
-    String explicar = """
-                Faça uma explicação detalhada sobre o assunto a seguir:
-            """;
-
     @PostMapping("/flashcards")
     public Map<String, String> generateFlashcards(@RequestBody String topic){
-        String prompt = flashcards + topic;
-        return Map.of("response", aiService.run(prompt));
+        String prompt = """
+                Crie flashcards enumerados
+                Crie flashcards com base nesse tema: %s
+                """.formatted(topic);
+        return Map.of("response", aiService.run(prompt, "estudos"));
     }
 
     @PostMapping("/resumo")
     public Map<String, String> summarizeText(@RequestBody String text){
-        String prompt = resumos + text;
-        return Map.of("response", aiService.run(prompt));
+        String prompt = """
+               Faça um resumo do texto abaixo
+               %s
+               """.formatted(text);
+        return Map.of("response", aiService.run(prompt, "estudos"));
     }
 
     @PostMapping("/explicar")
     public Map<String, String> explainSubject(@RequestBody String subject){
-        String prompt = explicar + subject;
-        return Map.of("response", aiService.run(prompt));
+        String prompt = """
+                Explique detadalhamente o tema a seguir: %s
+                """.formatted(subject);
+        return Map.of("response", aiService.run(prompt, "estudos"));
     }
 
 }
