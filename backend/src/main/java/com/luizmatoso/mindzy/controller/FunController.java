@@ -17,7 +17,8 @@ public class FunController {
     }
 
     @PostMapping("/piadas")
-    public Map<String, String> generateJokes(@RequestBody String topic){
+    public Map<String, String> generateJokes(@RequestBody Map<String, String> request){
+        String topic = request.get("question");
         String prompt = """
                 Crie piadas no tema %s
                 Enumere as piadas e não esqueça de sempre criar no formato PERGUNTA e RESPOSTA.
@@ -26,7 +27,8 @@ public class FunController {
     }
 
     @PostMapping("/curiosidades")
-    public Map<String, String> generateCuriosities(@RequestBody String topic){
+    public Map<String, String> generateCuriosities(@RequestBody Map<String, String> request){
+        String topic = request.get("question");
         String prompt = """
                 Traga curiosidades interessantes e surpreendentes sobre %s
                 """.formatted(topic);

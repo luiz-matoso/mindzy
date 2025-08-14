@@ -19,7 +19,8 @@ public class TechController {
     }
 
     @PostMapping("/explicarCodigo")
-    public Map<String, String> explainCode(@RequestBody String code) {
+    public Map<String, String> explainCode(@RequestBody Map<String, String> request) {
+        String code = request.get("question");
         String prompt = """
                 Explique esse código a seguir com base no seu conhecimento em Python: %s
                 """.formatted(code);
@@ -27,7 +28,8 @@ public class TechController {
     }
 
     @PostMapping("/criarCodigo")
-    public Map<String, String> createCode(@RequestBody String codeDetails){
+    public Map<String, String> createCode(@RequestBody Map<String, String> request){
+        String codeDetails = request.get("question");
         String prompt = """
                 Com base nos seus conhecimentos em Python
                 Crie o código com base nessas informações: %s

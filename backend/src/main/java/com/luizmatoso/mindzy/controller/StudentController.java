@@ -15,7 +15,8 @@ public class StudentController {
     }
 
     @PostMapping("/flashcards")
-    public Map<String, String> generateFlashcards(@RequestBody String topic){
+    public Map<String, String> generateFlashcards(@RequestBody Map<String, String> request){
+        String topic = request.get("question");
         String prompt = """
                 Crie flashcards enumerados
                 Crie flashcards com base nesse tema: %s
@@ -24,7 +25,8 @@ public class StudentController {
     }
 
     @PostMapping("/resumo")
-    public Map<String, String> summarizeText(@RequestBody String text){
+    public Map<String, String> summarizeText(@RequestBody Map<String, String> request){
+        String text = request.get("question");
         String prompt = """
                Faça um resumo do texto abaixo
                %s
@@ -33,7 +35,8 @@ public class StudentController {
     }
 
     @PostMapping("/explicar")
-    public Map<String, String> explainSubject(@RequestBody String subject){
+    public Map<String, String> explainSubject(@RequestBody Map<String, String> request){
+        String subject = request.get("question");
         String prompt = """
                 Explique detadalhamente o tema a seguir: %s
                 """.formatted(subject);
