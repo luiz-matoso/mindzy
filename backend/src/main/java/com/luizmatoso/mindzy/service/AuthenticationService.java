@@ -6,13 +6,11 @@ import com.luizmatoso.mindzy.dto.VerifyUserDTO;
 import com.luizmatoso.mindzy.model.User;
 import com.luizmatoso.mindzy.repository.UserRepository;
 import jakarta.mail.MessagingException;
-import org.springframework.messaging.handler.annotation.MessageExceptionHandler;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Random;

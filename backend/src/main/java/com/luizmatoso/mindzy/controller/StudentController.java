@@ -1,10 +1,11 @@
 package com.luizmatoso.mindzy.controller;
 
-import java.util.Map;
-
-import org.springframework.web.bind.annotation.*;
-
 import com.luizmatoso.mindzy.service.AIService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RestController
 public class StudentController {

@@ -7,7 +7,6 @@ import com.luizmatoso.mindzy.model.User;
 import com.luizmatoso.mindzy.responses.LoginResponse;
 import com.luizmatoso.mindzy.service.AuthenticationService;
 import com.luizmatoso.mindzy.service.JwtService;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

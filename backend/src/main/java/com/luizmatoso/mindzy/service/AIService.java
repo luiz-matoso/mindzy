@@ -3,8 +3,6 @@ package com.luizmatoso.mindzy.service;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 
-import java.util.Locale;
-
 @Service
 public class AIService {
 
