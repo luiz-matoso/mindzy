@@ -17,6 +17,21 @@ body {
   animation: gradient 2s ease infinite;
 }
 
+.sign-up {
+  background: linear-gradient(120deg, #06b6d4, #0d9488, #15803d);
+  background-size: 200%;
+  color: white;
+  animation: gradient 5s ease-in-out infinite;
+}
+
+.sign-in {
+  background: linear-gradient(120deg, #06b6d4, #0d9488, #15803d);
+  background-size: 200%;
+  background-clip: text;
+  color: transparent;
+  animation: gradient 2s ease infinite;
+}
+
 @keyframes gradient {
   0%,
   100% {

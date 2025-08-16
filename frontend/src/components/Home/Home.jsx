@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import Header from "../Header/Header";
+import SubCategorySelector from "../Header/SubCategorySelector";
 
 const Home = ({
   question,

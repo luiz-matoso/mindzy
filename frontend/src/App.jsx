@@ -14,6 +14,8 @@ import {
   generateJokes,
   generateCuriosities,
 } from "./api/aiService";
+import { Route, Routes } from "react-router-dom";
+import Login from "./components/Login/Login";
 
 function App() {
   const [question, setQuestion] = useState("");
@@ -91,21 +93,34 @@ function App() {
 
   return (
     <>
-      <Header selected={selectedCategory} onSelect={handleCategoryChange} />
-      <SubCategorySelector
-        category={selectedCategory}
-        selectedSubcategory={selectedSubcategory}
-        onSelectSubcategory={setSelectedSubCategory}
-      />
-      <Home
-        question={question}
-        setQuestion={setQuestion}
-        answer={answer}
-        handleSumbit={handleSumbit}
-        placeholder={placeholder}
-        description={description}
-        buttonText={buttonText}
-      />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Header
+                selected={selectedCategory}
+                onSelect={handleCategoryChange}
+              />
+              <SubCategorySelector
+                category={selectedCategory}
+                selectedSubcategory={selectedSubcategory}
+                onSelectSubcategory={setSelectedSubCategory}
+              />
+              <Home
+                question={question}
+                setQuestion={setQuestion}
+                answer={answer}
+                handleSumbit={handleSumbit}
+                placeholder={placeholder}
+                description={description}
+                buttonText={buttonText}
+              />
+            </>
+          }
+        />
+      </Routes>
     </>
   );
 }

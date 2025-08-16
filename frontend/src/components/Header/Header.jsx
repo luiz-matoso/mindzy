@@ -1,14 +1,32 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ selected, onSelect }) => {
+  const navigate = useNavigate();
   const options = ["Para estudantes", "Tecnologia", "Diversão"];
   const newBadges = ["Tecnologia", "Diversão"];
 
   return (
     <div className="flex flex-col items-center gap-6 py-12">
-      <h2 className="text-5xl bg-gradient-to-r from-purple-500 via-teal-500 to-red-500 text-transparent bg-clip-text p-4 pl-12 animate-gradient">
-        Mindzy
-      </h2>
+      <nav className="w-full px-4">
+        <div className="flex justify-between items-center">
+          <h2 className="text-5xl bg-gradient-to-r from-purple-500 via-teal-500 to-red-500 text-transparent bg-clip-text p-4 pl-12 animate-gradient">
+            Mindzy
+          </h2>
+          <div className="flex gap-4">
+            <button
+              onClickCapture={() => navigate("/login")}
+              className="sign-in border border-zinc-700 bg-zinc-900 px-8 py-2 rounded-3xl cursor-pointer"
+            >
+              Sign In
+            </button>
+            <button className="sign-up px-8 py-2 rounded-3xl cursor-pointer">
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </nav>
+
       <div className="flex gap-6">
         {options.map((option) => (
           <div key={option} className="relative">

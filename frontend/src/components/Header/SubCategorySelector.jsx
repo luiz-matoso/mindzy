@@ -26,7 +26,7 @@ const SubCategorySelector = ({
       {subcategories.map((subcat) => (
         <div key={subcat} className="relative">
           {selectedSubcategory === subcat && (
-            <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-600 via-teal-600 to-sky-600 opacity-75 blur-2xl"></div>
+            <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-600 via-teal-600 to-sky-600 opacity-75 blur-2xl cursor-pointer"></div>
           )}
           <button
             key={subcat}
