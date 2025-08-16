@@ -41,7 +41,9 @@ const Home = ({
   return (
     <div className="max-w-[800px] m-auto p-[20px]">
       <form onSubmit={handleSubmitWithLoading}>
-        <p className="text-2xl mt-8 mb-4 text-gray-500">{description}</p>
+        <p className="text-2xl text-center mt-8 mb-4 text-gray-500">
+          {description}
+        </p>
         <div className="bg-neutral-900 rounded-3xl">
           <textarea
             ref={textareaRef}
@@ -62,14 +64,16 @@ const Home = ({
           />
         </div>
 
-        <div className="relative inline-block">
-          <div className="mt-5 absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-500 via-teal-500 to-sky-500 opacity-40 blur-2xl"></div>
-          <button
-            type="submit"
-            className="relative bg-gradient-to-l from-[#06b6d4] via-[#0d9488] to-[#15803d] px-4 py-2 rounded-3xl cursor-pointer mt-5 text-white text-2xl"
-          >
-            {buttonText}
-          </button>
+        <div className="flex justify-center">
+          <div className="relative inline-block text-center">
+            <div className="mt-5 absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-500 via-teal-500 to-sky-500 opacity-40 blur-2xl"></div>
+            <button
+              type="submit"
+              className="relative bg-gradient-to-l from-[#06b6d4] via-[#0d9488] to-[#15803d] px-4 py-2 rounded-3xl cursor-pointer mt-5 text-white text-2xl"
+            >
+              {buttonText}
+            </button>
+          </div>
         </div>
       </form>
 

@@ -7,7 +7,7 @@ const Header = ({ selected, onSelect }) => {
   const newBadges = ["Tecnologia", "Diversão"];
 
   return (
-    <div className="flex flex-col items-center gap-6 py-12">
+    <div className="flex flex-col items-center gap-6 py-12 max-w-7xl m-auto p-2">
       <nav className="w-full px-4">
         <div className="flex justify-between items-center">
           <h2 className="text-5xl bg-gradient-to-r from-purple-500 via-teal-500 to-red-500 text-transparent bg-clip-text p-4 pl-12 animate-gradient">
