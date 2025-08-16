@@ -14,6 +14,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
@@ -32,6 +34,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
             httpSecurity.csrf(csrf -> csrf.disable())
+                    .cors(withDefaults())
                     .authorizeHttpRequests(authorize -> authorize
                             .requestMatchers("/", "/auth/**").permitAll()
                             .anyRequest().authenticated()

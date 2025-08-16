@@ -16,6 +16,7 @@ import {
 } from "./api/aiService";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login/Login";
+import { Flip, ToastContainer } from "react-toastify";
 
 function App() {
   const [question, setQuestion] = useState("");
@@ -93,34 +94,49 @@ function App() {
 
   return (
     <>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/"
-          element={
-            <>
-              <Header
-                selected={selectedCategory}
-                onSelect={handleCategoryChange}
-              />
-              <SubCategorySelector
-                category={selectedCategory}
-                selectedSubcategory={selectedSubcategory}
-                onSelectSubcategory={setSelectedSubCategory}
-              />
-              <Home
-                question={question}
-                setQuestion={setQuestion}
-                answer={answer}
-                handleSumbit={handleSumbit}
-                placeholder={placeholder}
-                description={description}
-                buttonText={buttonText}
-              />
-            </>
-          }
+      <div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Flip}
         />
-      </Routes>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <Header
+                  selected={selectedCategory}
+                  onSelect={handleCategoryChange}
+                />
+                <SubCategorySelector
+                  category={selectedCategory}
+                  selectedSubcategory={selectedSubcategory}
+                  onSelectSubcategory={setSelectedSubCategory}
+                />
+                <Home
+                  question={question}
+                  setQuestion={setQuestion}
+                  answer={answer}
+                  handleSumbit={handleSumbit}
+                  placeholder={placeholder}
+                  description={description}
+                  buttonText={buttonText}
+                />
+              </>
+            }
+          />
+        </Routes>
+      </div>
     </>
   );
 }
