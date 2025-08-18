@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Header from "../Header/Header";
 import SubCategorySelector from "../Header/SubCategorySelector";
+import { Bounce, toast } from "react-toastify";
 
 const Home = ({
   question,

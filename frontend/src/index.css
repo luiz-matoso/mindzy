@@ -32,6 +32,10 @@ body {
   animation: gradient 2s ease infinite;
 }
 
+input:-webkit-autofill {
+  -webkit-text-fill-color: white !important;
+}
+
 @keyframes gradient {
   0%,
   100% {
