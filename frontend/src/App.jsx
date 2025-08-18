@@ -17,6 +17,7 @@ import {
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login/Login";
 import { Flip, ToastContainer } from "react-toastify";
+import Register from "./components/Register/Register";
 
 function App() {
   const [question, setQuestion] = useState("");
@@ -110,6 +111,7 @@ function App() {
         />
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Register />} />
           <Route
             path="/"
             element={

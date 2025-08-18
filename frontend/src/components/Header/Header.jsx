@@ -20,7 +20,10 @@ const Header = ({ selected, onSelect }) => {
             >
               Sign In
             </button>
-            <button className="sign-up px-8 py-2 rounded-3xl cursor-pointer">
+            <button
+              onClickCapture={() => navigate("/signup")}
+              className="sign-up px-8 py-2 rounded-3xl cursor-pointer"
+            >
               Sign Up
             </button>
           </div>
