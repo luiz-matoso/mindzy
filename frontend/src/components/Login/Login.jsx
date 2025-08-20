@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuth();
 
   const BASE_URL = "http://localhost:8080";
 
@@ -19,10 +21,15 @@ const Login = () => {
         password,
       });
 
+      const authData = response.data;
+
+      login(authData);
+
       toast.success("Login bem-sucedido");
       navigate("/");
     } catch (error) {
       toast.error("Email ou senha incorretos. Tente novamente.");
+      console.log(error);
     }
   };
 
@@ -78,6 +85,7 @@ const Login = () => {
                     id="password"
                     placeholder="••••••••"
                     className="caret-zinc-400 bg-gradient-to-r from-orange-500 via-indigo-500 to-green-500 text-transparent bg-clip-text text-center border-2 border-neutral-600 focus:border-neutral-400 focus:ring-neutral-500 focus:outline-none text-sm rounded-lg block w-full p-2.5"
+                    onChange={(e) => setPassword(e.target.value)}
                     value={password}
                     required
                   />
