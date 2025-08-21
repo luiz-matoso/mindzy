@@ -7,7 +7,7 @@ const Header = ({ selected, onSelect }) => {
   const options = ["Para estudantes", "Tecnologia", "Diversão"];
   const newBadges = ["Tecnologia", "Diversão"];
 
-  const { authState } = useAuth();
+  const { authState, logout } = useAuth();
 
   return (
     <div className="flex flex-col items-center gap-6 py-12 max-w-7xl m-auto p-2">
@@ -21,18 +21,18 @@ const Header = ({ selected, onSelect }) => {
               <button
                 id="dropdownAvatarNameButton"
                 data-dropdown-toggle="dropdownAvatarName"
-                className="cursor-pointer flex items-center text-sm pe-1 font-medium text-gray-900 rounded-full hover:text-blue-600 dark:hover:text-blue-500 md:me-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white"
+                className="cursor-pointer flex items-center text-sm pe-1 font-medium text-white rounded-full profile-gradient"
                 type="button"
               >
                 <span className="sr-only">Open user menu</span>
                 <img
                   className="w-8 h-8 me-2 rounded-full"
-                  src="/docs/images/people/profile-picture-3.jpg"
+                  src="https://www.citypng.com/public/uploads/preview/white-user-member-guest-icon-png-image-701751695037005zdurfaim0y.png"
                   alt="user photo"
                 />
                 Olá, {authState.user.username}!
                 <svg
-                  className="w-2.5 h-2.5 ms-3"
+                  className="w-2.5 h-2.5 ms-3 group-hover:text-white"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -50,47 +50,40 @@ const Header = ({ selected, onSelect }) => {
 
               <div
                 id="dropdownAvatarName"
-                className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600"
+                className="z-10 hidden bg-neutral-800 divide-y divide-gray-100 rounded-lg shadow-sm w-54"
               >
                 <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                  <div className="font-medium ">Pro User</div>
+                  <div className="font-medium ">{authState.user.username}</div>
                   <div className="truncate">{authState.user.email}</div>
                 </div>
                 <ul
-                  className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                  className="py-2 text-sm text-gray-200"
                   aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton"
                 >
                   <li>
                     <a
                       href="#"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      className="block px-4 py-2 hover:bg-neutral-600"
                     >
-                      Dashboard
+                      Perfil
                     </a>
                   </li>
                   <li>
                     <a
                       href="#"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      className="block px-4 py-2 hover:bg-neutral-600"
                     >
-                      Settings
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >
-                      Earnings
+                      Configurações
                     </a>
                   </li>
                 </ul>
                 <div className="py-2">
                   <a
                     href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    className="block px-4 py-2 text-sm text-white hover:bg-neutral-600"
+                    onClick={logout}
                   >
-                    Sign out
+                    Desconectar
                   </a>
                 </div>
               </div>

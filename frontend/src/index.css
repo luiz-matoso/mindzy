@@ -11,6 +11,23 @@ body {
   background-color: #0c0c0c;
 }
 
+.profile-gradient svg {
+  color: white;
+}
+
+.profile-gradient:hover {
+  background: linear-gradient(135deg, #a855f7, #14b8a6, #ef4444);
+  background-size: 200%;
+  background-clip: text;
+  color: transparent;
+  transition: 0.6s;
+}
+
+.profile-gradient:hover svg {
+  color: #14b8a6;
+  transition: 0.6s;
+}
+
 .animate-gradient {
   background: linear-gradient(135deg, #a855f7, #14b8a6, #ef4444);
   background-size: 200%;
