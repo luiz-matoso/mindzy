@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Header from "../Header/Header";
 import SubCategorySelector from "../Header/SubCategorySelector";
 import { Bounce, toast } from "react-toastify";
+import { useAuth } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const Home = ({
   question,
@@ -11,9 +13,14 @@ const Home = ({
   placeholder,
   description,
   buttonText,
+  selected,
 }) => {
   const textareaRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
+  const onlyAuthenticated = ["Tecnologia", "Diversão"];
+  const { authState } = useAuth();
+
+  const isLoggedIn = authState.token;
 
   useEffect(() => {
     setQuestion("");
@@ -41,42 +48,75 @@ const Home = ({
 
   return (
     <div className="max-w-[800px] m-auto p-[20px]">
-      <form onSubmit={handleSubmitWithLoading}>
-        <p className="text-2xl text-center mt-8 mb-4 text-gray-500">
-          {description}
-        </p>
-        <div className="bg-neutral-900 rounded-3xl">
-          <textarea
-            ref={textareaRef}
-            className="w-full p-4
-          resize-none
-          border-none outline-none 
-          placeholder:text-center 
-          text-2xl 
-          text-center
-          bg-gradient-to-r from-purple-500 via-teal-500 to-red-500 text-transparent bg-clip-text
-          min-h-[40px]
-          max-h-[300px]
-          overflow-y-auto"
-            rows={1}
-            value={question}
-            onChange={handleChange}
-            placeholder={placeholder}
-          />
-        </div>
+      {!onlyAuthenticated.includes(selected) || isLoggedIn ? (
+        <form onSubmit={handleSubmitWithLoading}>
+          <p className="text-2xl text-center mt-8 mb-4 text-gray-400">
+            {description}
+          </p>
+          <div className="bg-neutral-900 rounded-3xl">
+            <textarea
+              ref={textareaRef}
+              className="w-full p-4 resize-none border-none outline-none placeholder:text-center text-2xl text-center bg-gradient-to-r from-purple-500 via-teal-500 to-red-500 text-transparent bg-clip-text min-h-[40px] max-h-[300px] overflow-y-auto"
+              rows={1}
+              value={question}
+              onChange={handleChange}
+              placeholder={placeholder}
+            />
+          </div>
 
-        <div className="flex justify-center">
-          <div className="relative inline-block text-center">
-            <div className="mt-5 absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-500 via-teal-500 to-sky-500 opacity-40 blur-2xl"></div>
-            <button
-              type="submit"
-              className="relative bg-gradient-to-l from-[#06b6d4] via-[#0d9488] to-[#15803d] px-4 py-2 rounded-3xl cursor-pointer mt-5 text-white text-2xl"
+          <div className="flex justify-center">
+            <div className="relative inline-block text-center">
+              <div className="mt-5 absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-500 via-teal-500 to-sky-500 opacity-40 blur-2xl"></div>
+              <button
+                type="submit"
+                className="relative bg-gradient-to-l from-[#06b6d4] via-[#0d9488] to-[#15803d] px-4 py-2 rounded-3xl cursor-pointer mt-5 text-white text-2xl"
+              >
+                {buttonText}
+              </button>
+            </div>
+          </div>
+        </form>
+      ) : (
+        <div className="text-center mt-20 p-8 bg-neutral-900 rounded-xl border border-zinc-800">
+          <h2 className="text-3xl text-white font-bold mb-4">
+            Acesso Bloqueado
+          </h2>
+          <div className="flex justify-center m-10">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="white"
+              className="size-12"
             >
-              {buttonText}
-            </button>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
+              />
+            </svg>
+          </div>
+
+          <p className="text-lg text-gray-400 mb-6">
+            Você precisa estar autenticado para usar a categoria "{selected}".
+          </p>
+          <div className="flex gap-4 justify-center">
+            <Link
+              to="/login"
+              className="px-8 py-2 border border-zinc-700 bg-zinc-800 text-white rounded-3xl hover:bg-zinc-700 transition-colors"
+            >
+              Fazer Login
+            </Link>
+            <Link
+              to="/signup"
+              className="px-8 py-2 sign-up text-white rounded-3xl"
+            >
+              Criar Conta
+            </Link>
           </div>
         </div>
-      </form>
+      )}
 
       {isLoading ? (
         <div className="relative mt-10">

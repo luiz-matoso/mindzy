@@ -7,6 +7,7 @@ const Header = ({ selected, onSelect }) => {
   const navigate = useNavigate();
   const options = ["Para estudantes", "Tecnologia", "Diversão"];
   const newBadges = ["Tecnologia", "Diversão"];
+  const onlyAuthenticated = ["Tecnologia", "Diversão"];
 
   const { authState, logout } = useAuth();
 
@@ -104,13 +105,13 @@ const Header = ({ selected, onSelect }) => {
                 onClickCapture={() => navigate("/login")}
                 className="sign-in border border-zinc-700 bg-zinc-900 px-8 py-2 rounded-3xl cursor-pointer"
               >
-                Login
+                Fazer Login
               </button>
               <button
                 onClickCapture={() => navigate("/signup")}
                 className="sign-up px-8 py-2 rounded-3xl cursor-pointer"
               >
-                Cadastro
+                Criar Conta
               </button>
             </div>
           </div>
@@ -128,7 +129,7 @@ const Header = ({ selected, onSelect }) => {
               className={`relative px-8 py-2 rounded-3xl cursor-pointer transition-all ${
                 selected === option
                   ? "gradient-swap-button-options text-white"
-                  : "text-white border border-zinc-700 bg-zinc-900"
+                  : "text-white border border-zinc-700 bg-zinc-900 hover:bg-zinc-700 duration-400 transition-colors"
               }`}
             >
               <span className="relative z-10">{option}</span>

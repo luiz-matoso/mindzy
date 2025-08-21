@@ -133,6 +133,7 @@ function App() {
                   placeholder={placeholder}
                   description={description}
                   buttonText={buttonText}
+                  selected={selectedCategory}
                 />
               </>
             }
