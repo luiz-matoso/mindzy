@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Home from "./components/Home/Home";
+import Mindzy from "./components/Mindzy/Mindzy";
 import Header from "./components/Header/Header";
-import SubCategorySelector from "./components/Header/SubCategorySelector";
 import config from "./utils/config";
 
 import {
@@ -120,12 +119,7 @@ function App() {
                   selected={selectedCategory}
                   onSelect={handleCategoryChange}
                 />
-                <SubCategorySelector
-                  category={selectedCategory}
-                  selectedSubcategory={selectedSubcategory}
-                  onSelectSubcategory={setSelectedSubCategory}
-                />
-                <Home
+                <Mindzy
                   question={question}
                   setQuestion={setQuestion}
                   answer={answer}
@@ -134,6 +128,10 @@ function App() {
                   description={description}
                   buttonText={buttonText}
                   selected={selectedCategory}
+                  onSelect={handleCategoryChange}
+                  category={selectedCategory}
+                  selectedSubcategory={selectedSubcategory}
+                  onSelectSubcategory={setSelectedSubCategory}
                 />
               </>
             }

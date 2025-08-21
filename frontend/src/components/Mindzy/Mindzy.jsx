@@ -1,11 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import Header from "../Header/Header";
-import SubCategorySelector from "../Header/SubCategorySelector";
 import { Bounce, toast } from "react-toastify";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 
-const Home = ({
+const subcategoriesByCategory = {
+  "Para estudantes": ["Flashcards", "Resumo", "Explicação"],
+  Tecnologia: ["Explicar código", "Criar código"],
+  Diversão: ["Piadas", "Curiosidades"],
+};
+
+const Mindzy = ({
   question,
   setQuestion,
   answer,
@@ -14,9 +19,24 @@ const Home = ({
   description,
   buttonText,
   selected,
+  category,
+  selectedSubcategory,
+  onSelectSubcategory,
+  onSelect,
 }) => {
   const textareaRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
+  const options = ["Para estudantes", "Tecnologia", "Diversão"];
+  const newBadges = [
+    "Tecnologia",
+    "Diversão",
+    "Explicação",
+    "Explicar código",
+    "Criar código",
+    "Piadas",
+    "Curiosidades",
+  ];
+  const subcategories = subcategoriesByCategory[category] || [];
   const onlyAuthenticated = ["Tecnologia", "Diversão"];
   const { authState } = useAuth();
 
@@ -48,6 +68,58 @@ const Home = ({
 
   return (
     <div className="max-w-[800px] m-auto p-[20px]">
+      <div className="flex flex-col items-center gap-6 py-12 max-w-7xl m-auto p-2">
+        <div className="flex gap-6">
+          {options.map((option) => (
+            <div key={option} className="relative">
+              {selected === option && (
+                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-600 via-teal-600 to-sky-600 opacity-75 blur-2xl"></div>
+              )}
+              <button
+                onClick={() => onSelect(option)}
+                className={`relative px-8 py-2 rounded-3xl cursor-pointer transition-all ${
+                  selected === option
+                    ? "gradient-swap-button-options text-white"
+                    : "text-white border border-zinc-700 bg-zinc-900 hover:bg-zinc-700 duration-400 transition-colors"
+                }`}
+              >
+                <span className="relative z-10">{option}</span>
+              </button>
+              {newBadges.includes(option) && (
+                <span className="absolute -top-2 -right-3 z-20 bg-gradient-to-r from-[#fde68a]  to-[#f59e0b] text-black text-xs font-sm px-2.5 py-0.5 rounded-xl">
+                  NEW
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex justify-center gap-4 mt-[-20px]">
+        {subcategories.map((subcat) => (
+          <div key={subcat} className="relative">
+            {selectedSubcategory === subcat && (
+              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-600 via-teal-600 to-sky-600 opacity-75 blur-2xl cursor-pointer"></div>
+            )}
+            <button
+              key={subcat}
+              onClick={() => onSelectSubcategory(subcat)}
+              className={`px-6 py-2 rounded-3xl cursor-pointer ${
+                selectedSubcategory === subcat
+                  ? "gradient-swap-button-options text-white"
+                  : "text-white border border-zinc-700"
+              }`}
+            >
+              <span className="relative z-10">{subcat}</span>
+            </button>
+            {newBadges.includes(subcat) && (
+              <span className="absolute -top-2 -right-3 bg-gradient-to-r from-[#fde68a]  to-[#f59e0b] text-black text-xs font-sm px-2.5 py-0.5 rounded-xl">
+                NEW
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
       {!onlyAuthenticated.includes(selected) || isLoggedIn ? (
         <form onSubmit={handleSubmitWithLoading}>
           <p className="text-2xl text-center mt-8 mb-4 text-gray-400">
@@ -158,4 +230,4 @@ const Home = ({
   );
 };
 
-export default Home;
+export default Mindzy;

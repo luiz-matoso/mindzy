@@ -117,31 +117,6 @@ const Header = ({ selected, onSelect }) => {
           </div>
         )}
       </nav>
-
-      <div className="flex gap-6">
-        {options.map((option) => (
-          <div key={option} className="relative">
-            {selected === option && (
-              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-600 via-teal-600 to-sky-600 opacity-75 blur-2xl"></div>
-            )}
-            <button
-              onClick={() => onSelect(option)}
-              className={`relative px-8 py-2 rounded-3xl cursor-pointer transition-all ${
-                selected === option
-                  ? "gradient-swap-button-options text-white"
-                  : "text-white border border-zinc-700 bg-zinc-900 hover:bg-zinc-700 duration-400 transition-colors"
-              }`}
-            >
-              <span className="relative z-10">{option}</span>
-            </button>
-            {newBadges.includes(option) && (
-              <span className="absolute -top-2 -right-3 z-20 bg-gradient-to-r from-[#fde68a]  to-[#f59e0b] text-black text-xs font-sm px-2.5 py-0.5 rounded-xl">
-                NEW
-              </span>
-            )}
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
