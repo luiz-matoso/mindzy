@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { initFlowbite } from "flowbite";
 
 const Header = ({ selected, onSelect }) => {
   const navigate = useNavigate();
@@ -8,6 +9,10 @@ const Header = ({ selected, onSelect }) => {
   const newBadges = ["Tecnologia", "Diversão"];
 
   const { authState, logout } = useAuth();
+
+  useEffect(() => {
+    initFlowbite();
+  }, []);
 
   return (
     <div className="flex flex-col items-center gap-6 py-12 max-w-7xl m-auto p-2">
@@ -40,9 +45,9 @@ const Header = ({ selected, onSelect }) => {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="m1 1 4 4 4-4"
                   />
                 </svg>
