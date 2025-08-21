@@ -51,6 +51,54 @@ body {
   animation: gradient 2s ease infinite;
 }
 
+.gradient-swap-button {
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(to left, #06b6d4, #0d9488, #15803d);
+}
+
+.gradient-swap-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background-image: linear-gradient(to right, #06b6d4, #0d9488, #15803d);
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.gradient-swap-button:hover::before {
+  opacity: 0;
+}
+
+/* options */
+
+.gradient-swap-button-options {
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(to right, #06b6d4, #0d9488, #15803d);
+}
+
+.gradient-swap-button-options::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background-image: linear-gradient(to left, #06b6d4, #0d9488, #15803d);
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.gradient-swap-button-options:hover::before {
+  opacity: 0;
+}
+
 input:-webkit-autofill {
   -webkit-text-fill-color: white !important;
 }

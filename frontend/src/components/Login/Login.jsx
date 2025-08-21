@@ -93,9 +93,9 @@ const Login = () => {
 
                 <button
                   type="submit"
-                  className="bg-gradient-to-l from-[#06b6d4] via-[#0d9488] to-[#15803d] text-white w-full text-white bg-blue-600 cursor-pointer hover:bg-gradient-to-r focus:ring focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  className="gradient-swap-button text-white w-full cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring focus:outline-none"
                 >
-                  Login
+                  <span className="relative z-10">Login</span>
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Não tem uma conta?{" "}

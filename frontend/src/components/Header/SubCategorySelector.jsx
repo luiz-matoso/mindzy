@@ -33,17 +33,17 @@ const SubCategorySelector = ({
             onClick={() => onSelectSubcategory(subcat)}
             className={`px-6 py-2 rounded-3xl cursor-pointer ${
               selectedSubcategory === subcat
-                ? "bg-gradient-to-l from-[#06b6d4] via-[#0d9488] to-[#15803d] text-white"
+                ? "gradient-swap-button-options text-white"
                 : "text-white border border-zinc-700"
             }`}
           >
-            {subcat}
-            {newBadges.includes(subcat) && (
-              <span className="absolute -top-2 bg-gradient-to-r from-[#fde68a]  to-[#f59e0b] text-black text-xs font-sm px-2.5 py-0.5 rounded-xl">
-                NEW
-              </span>
-            )}
+            <span className="relative z-10">{subcat}</span>
           </button>
+          {newBadges.includes(subcat) && (
+            <span className="absolute -top-2 -right-3 bg-gradient-to-r from-[#fde68a]  to-[#f59e0b] text-black text-xs font-sm px-2.5 py-0.5 rounded-xl">
+              NEW
+            </span>
+          )}
         </div>
       ))}
     </div>

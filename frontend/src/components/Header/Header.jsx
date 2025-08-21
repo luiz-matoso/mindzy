@@ -122,17 +122,17 @@ const Header = ({ selected, onSelect }) => {
               onClick={() => onSelect(option)}
               className={`relative px-8 py-2 rounded-3xl cursor-pointer transition-all ${
                 selected === option
-                  ? "bg-gradient-to-l from-[#06b6d4] via-[#0d9488] to-[#15803d] text-white"
+                  ? "gradient-swap-button-options text-white"
                   : "text-white border border-zinc-700 bg-zinc-900"
               }`}
             >
-              {option}
-              {newBadges.includes(option) && (
-                <span className="absolute -top-2 bg-gradient-to-r from-[#fde68a]  to-[#f59e0b] text-black text-xs font-sm px-2.5 py-0.5 rounded-xl">
-                  NEW
-                </span>
-              )}
+              <span className="relative z-10">{option}</span>
             </button>
+            {newBadges.includes(option) && (
+              <span className="absolute -top-2 -right-3 z-20 bg-gradient-to-r from-[#fde68a]  to-[#f59e0b] text-black text-xs font-sm px-2.5 py-0.5 rounded-xl">
+                NEW
+              </span>
+            )}
           </div>
         ))}
       </div>
