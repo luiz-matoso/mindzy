@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Mindzy from "./components/Mindzy/Mindzy";
 import Header from "./components/Header/Header";
@@ -17,6 +17,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login/Login";
 import { Flip, ToastContainer } from "react-toastify";
 import Register from "./components/Register/Register";
+import Home from "./components/Home/Home";
 
 function App() {
   const [question, setQuestion] = useState("");
@@ -28,6 +29,12 @@ function App() {
   const [placeholder, setPlaceholder] = useState("");
   const [description, setDescription] = useState("");
   const [buttonText, setButtonText] = useState("");
+
+  const mindzyRef = useRef(null);
+
+  const handleScrollToMindzy = () => {
+    mindzyRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   function updateTexts(category, subcategory) {
     const categoryData = config[category];
@@ -119,6 +126,7 @@ function App() {
                   selected={selectedCategory}
                   onSelect={handleCategoryChange}
                 />
+                <Home onScrollClick={handleScrollToMindzy} />
                 <Mindzy
                   question={question}
                   setQuestion={setQuestion}
@@ -132,6 +140,7 @@ function App() {
                   category={selectedCategory}
                   selectedSubcategory={selectedSubcategory}
                   onSelectSubcategory={setSelectedSubCategory}
+                  ref={mindzyRef}
                 />
               </>
             }

@@ -36,6 +36,13 @@ body {
   animation: gradient 2s ease infinite;
 }
 
+.animate-gradient-button {
+  background: linear-gradient(90deg, #a855f7, #14b8a6, #ef4444);
+  background-size: 200%;
+  color: white;
+  animation: gradient 6s ease infinite;
+}
+
 .sign-up {
   background: linear-gradient(120deg, #06b6d4, #0d9488, #15803d);
   background-size: 200%;

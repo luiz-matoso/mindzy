@@ -20,7 +20,7 @@ const Header = ({ selected, onSelect }) => {
       <nav className="w-full px-4">
         {authState.token ? (
           <div className="flex justify-between items-center">
-            <h2 className="text-5xl bg-gradient-to-r from-purple-500 via-teal-500 to-red-500 text-transparent bg-clip-text p-4 animate-gradient">
+            <h2 className="text-5xl p-4 animate-gradient cursor-pointer">
               Mindzy
             </h2>
             <div className="flex gap-4">
@@ -97,7 +97,7 @@ const Header = ({ selected, onSelect }) => {
           </div>
         ) : (
           <div className="flex justify-between items-center">
-            <h2 className="text-5xl bg-gradient-to-r from-purple-500 via-teal-500 to-red-500 text-transparent bg-clip-text p-4 animate-gradient">
+            <h2 className="text-5xl p-4 animate-gradient cursor-pointer">
               Mindzy
             </h2>
             <div className="flex gap-4">
