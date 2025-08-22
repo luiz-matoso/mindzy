@@ -48,6 +48,11 @@ body {
   background-size: 200%;
   color: white;
   animation: gradient 5s ease-in-out infinite;
+  transition: 0.6s;
+}
+
+.sign-up:hover {
+  transform: scale(1.04);
 }
 
 .sign-in {
@@ -56,6 +61,11 @@ body {
   background-clip: text;
   color: transparent;
   animation: gradient 2s ease infinite;
+  transition: 0.6s;
+}
+
+.sign-in:hover {
+  transform: scale(1.04);
 }
 
 .gradient-swap-button {
