@@ -1,5 +1,6 @@
 {
   "_LINGUAGEM": "Inglês",
+
   "botoesHeader": { "fazerLogin": "Sign In", "criarConta": "Sign Up" },
 
   "headerDropdown": {
@@ -22,5 +23,17 @@
     "descricao": "From the student needing instant summaries to the developer looking to optimize code, Mindzy is your copilot for complex tasks. Generate flashcards, explain algorithms, or simply explore creativity with instantly generated ideas. Simplify the complex, accelerate your results.",
     "sobre": "About it",
     "toastWarn": "You are using Mindzy without creating an account, some features may be limited."
-  }
+  },
+
+  "toastsLogin": {
+    "success": "Login successful.",
+    "error": "Incorrect email or password. Please try again."
+  },
+
+  "loginTitle": "Sign in to your account",
+  "senha": "Password",
+  "emailText": "Your email",
+  "emailPlaceholder": "name@email.com",
+  "naoTemUmaConta": "Don't have an account?",
+  "crieAqui": "Sign Up"
 }

@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,11 +27,10 @@ const Login = () => {
 
       login(authData);
 
-      toast.success("Login bem-sucedido");
+      toast.success(t("toastsLogin.success"));
       navigate("/");
     } catch (error) {
-      toast.error("Email ou senha incorretos. Tente novamente.");
-      console.log(error);
+      toast.error(t("toastsLogin.error"));
     }
   };
 
@@ -48,7 +49,7 @@ const Login = () => {
           <div className="w-full bg-neutral-900 border border-zinc-800 rounded-lg md:mt-0 sm:max-w-md xl:p-0">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                Faça o seu login
+                {t("loginTitle")}
               </h1>
               <form
                 onSubmit={onSubmitHandler}
@@ -59,14 +60,14 @@ const Login = () => {
                     htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Seu email
+                    {t("emailText")}
                   </label>
                   <input
                     type="email"
                     name="email"
                     id="email"
                     className="caret-zinc-400 bg-gradient-to-r from-orange-500 via-indigo-500 to-green-500 text-transparent bg-clip-text text-center border-2 border-neutral-600 focus:border-neutral-400 focus:ring-neutral-500 focus:outline-none text-sm rounded-lg block w-full p-2.5"
-                    placeholder="nome@email.com"
+                    placeholder={t("emailPlaceholder")}
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
                     required
@@ -77,7 +78,7 @@ const Login = () => {
                     htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Senha
+                    {t("senha")}
                   </label>
                   <input
                     type="password"
@@ -98,12 +99,12 @@ const Login = () => {
                   <span className="relative z-10">Login</span>
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                  Não tem uma conta?{" "}
+                  {t("naoTemUmaConta")}{" "}
                   <a
                     href="#"
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
-                    Crie aqui
+                    {t("crieAqui")}
                   </a>
                 </p>
               </form>

@@ -1,5 +1,6 @@
 {
   "_LINGUAGEM": "Português-BR",
+
   "botoesHeader": { "fazerLogin": "Sign In", "criarConta": "Criar Conta" },
 
   "headerDropdown": {
@@ -22,5 +23,17 @@
     "descricao": "Do estudante que precisa de resumos instantâneos ao programador que busca otimizar um código, Mindzy é o seu copiloto para tarefas complexas. Gere flashcards, explique algoritmos ou simplesmente explore a criatividade com ideias geradas na hora. Simplifique o complexo, acelere seus resultados.",
     "sobre": "Conhecer sobre",
     "toastWarn": "Você está usando Mindzy sem criar uma conta, algumas funções podem estar limitadas."
-  }
+  },
+
+  "toastsLogin": {
+    "loginFeito": "Login bem-sucedido.",
+    "loginErro": "Email ou senha incorretos. Tente novamente."
+  },
+
+  "loginTitle": "Faça o seu login",
+  "senha": "Senha",
+  "emailText": "Seu email",
+  "emailPlaceholder": "nome@email.com",
+  "naoTemUmaConta": "Não tem uma conta?",
+  "crieAqui": "Crie aqui"
 }
