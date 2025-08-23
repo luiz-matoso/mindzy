@@ -73,6 +73,9 @@ const Mindzy = forwardRef(
     return (
       <div ref={ref} className="max-w-[800px] m-auto p-[20px] py-60">
         <div className="flex flex-col items-center gap-6 py-12 max-w-7xl m-auto p-2">
+          <h2 className="text-5xl p-4 animated-gradient-mindzy cursor-pointer">
+            Mindzy
+          </h2>
           <div className="flex gap-6">
             {options.map((option) => (
               <div key={option} className="relative">

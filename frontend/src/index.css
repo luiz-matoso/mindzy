@@ -36,6 +36,14 @@ body {
   animation: gradient 2s ease infinite;
 }
 
+.animated-gradient-mindzy {
+  background: linear-gradient(to right, #3b82f6, #14b8a6, #f97316);
+  background-size: 200%;
+  background-clip: text;
+  color: transparent;
+  animation: gradient 4s ease infinite;
+}
+
 .animate-gradient-button {
   background: linear-gradient(90deg, #a855f7, #14b8a6, #ef4444);
   background-size: 200%;
