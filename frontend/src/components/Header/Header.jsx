@@ -5,6 +5,7 @@ import { initFlowbite } from "flowbite";
 import { useTranslation } from "react-i18next";
 
 const Header = ({ selected, onSelect }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const options = ["Para estudantes", "Tecnologia", "Diversão"];
   const newBadges = ["Tecnologia", "Diversão"];
@@ -15,8 +16,6 @@ const Header = ({ selected, onSelect }) => {
   useEffect(() => {
     initFlowbite();
   }, []);
-
-  const { t } = useTranslation();
 
   return (
     <div className="flex flex-col items-center gap-6 py-12 max-w-7xl m-auto p-2">

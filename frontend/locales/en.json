@@ -3,9 +3,24 @@
   "botoesHeader": { "fazerLogin": "Sign In", "criarConta": "Sign Up" },
 
   "headerDropdown": {
-    "ola": "Hey",
+    "ola": "Hi",
     "perfil": "Profile",
     "config": "Settings",
     "logout": "Log out"
+  },
+
+  "toastInfo": "Mindzy is in BETA 1.0, some bugs may be found.",
+
+  "homeAutenticado": {
+    "titulo": "Unlock the power of your mind with Artificial Intelligence.",
+    "ei": "Hey",
+    "descricao": "continue using Mindzy and expand your ideas and general knowledge.",
+    "botaoUsar": "Use Mindzy"
+  },
+
+  "homeNaoAutenticado": {
+    "descricao": "From the student needing instant summaries to the developer looking to optimize code, Mindzy is your copilot for complex tasks. Generate flashcards, explain algorithms, or simply explore creativity with instantly generated ideas. Simplify the complex, accelerate your results.",
+    "sobre": "About it",
+    "toastWarn": "You are using Mindzy without creating an account, some features may be limited."
   }
 }

@@ -7,5 +7,20 @@
     "perfil": "Perfil",
     "config": "Configurações",
     "logout": "Desconectar"
+  },
+
+  "toastInfo": "Mindzy está no BETA 1.0, erros podem ocorrer.",
+
+  "homeAutenticado": {
+    "titulo": "Desbloqueie o poder da sua mente com Inteligência Artificial.",
+    "ei": "Ei",
+    "descricao": "continue usando Mindzy e expanda suas ideias e conhecimentos gerais.",
+    "botaoUsar": "Usar Mindzy"
+  },
+
+  "homeNaoAutenticado": {
+    "descricao": "Do estudante que precisa de resumos instantâneos ao programador que busca otimizar um código, Mindzy é o seu copiloto para tarefas complexas. Gere flashcards, explique algoritmos ou simplesmente explore a criatividade com ideias geradas na hora. Simplifique o complexo, acelere seus resultados.",
+    "sobre": "Conhecer sobre",
+    "toastWarn": "Você está usando Mindzy sem criar uma conta, algumas funções podem estar limitadas."
   }
 }
