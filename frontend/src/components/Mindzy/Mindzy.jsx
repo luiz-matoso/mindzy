@@ -94,7 +94,7 @@ const Mindzy = forwardRef(
                 </button>
                 {newBadges.includes(option) && (
                   <span className="absolute -top-2 -right-3 z-20 bg-gradient-to-r from-[#fde68a]  to-[#f59e0b] text-black text-xs font-sm px-2.5 py-0.5 rounded-xl">
-                    NEW
+                    NOVO
                   </span>
                 )}
               </div>
@@ -121,7 +121,7 @@ const Mindzy = forwardRef(
               </button>
               {newBadges.includes(subcat) && (
                 <span className="absolute -top-2 -right-3 bg-gradient-to-r from-[#fde68a]  to-[#f59e0b] text-black text-xs font-sm px-2.5 py-0.5 rounded-xl">
-                  NEW
+                  NOVO
                 </span>
               )}
             </div>
