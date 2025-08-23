@@ -1,0 +1,11 @@
+{
+  "_LINGUAGEM": "Inglês",
+  "botoesHeader": { "fazerLogin": "Sign In", "criarConta": "Sign Up" },
+
+  "headerDropdown": {
+    "ola": "Hey",
+    "perfil": "Profile",
+    "config": "Settings",
+    "logout": "Log out"
+  }
+}

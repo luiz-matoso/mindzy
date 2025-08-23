@@ -3,11 +3,15 @@ import { useAuth } from "../../context/AuthContext";
 import { Flip, toast } from "react-toastify";
 
 const Home = ({ onScrollClick }) => {
-  const { authState, username } = useAuth();
+  const { authState, isLoading } = useAuth();
   const isLoggedIn = authState.token;
 
-  if (!isLoggedIn) {
-    useEffect(() => {
+  useEffect(() => {
+    if (isLoading) {
+      return;
+    }
+
+    if (!isLoggedIn) {
       toast.warn(
         "Você está usando Mindzy sem criar uma conta, algumas funções podem estar limitadas.",
         {
@@ -20,10 +24,13 @@ const Home = ({ onScrollClick }) => {
           progress: undefined,
           theme: "dark",
           transition: Flip,
+          toastId: "unauthenticated-warning",
         }
       );
-    }, []);
-  }
+    } else {
+      toast.dismiss("unauthenticated-warning");
+    }
+  }, [isLoggedIn, isLoading]);
 
   useEffect(() => {
     toast.info("Mindzy está no BETA 1.0, alguns erros podem ser encontrados.", {
@@ -36,8 +43,13 @@ const Home = ({ onScrollClick }) => {
       progress: undefined,
       theme: "dark",
       transition: Flip,
+      toastId: "beta-info",
     });
   }, []);
+
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <section>

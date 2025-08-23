@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { initFlowbite } from "flowbite";
+import { useTranslation } from "react-i18next";
 
 const Header = ({ selected, onSelect }) => {
   const navigate = useNavigate();
@@ -14,6 +15,8 @@ const Header = ({ selected, onSelect }) => {
   useEffect(() => {
     initFlowbite();
   }, []);
+
+  const { t } = useTranslation();
 
   return (
     <div className="flex flex-col items-center gap-6 py-12 max-w-7xl m-auto p-2">
@@ -36,7 +39,7 @@ const Header = ({ selected, onSelect }) => {
                   src="https://www.citypng.com/public/uploads/preview/white-user-member-guest-icon-png-image-701751695037005zdurfaim0y.png"
                   alt="user photo"
                 />
-                Olá, {authState.user.username}!
+                {t("headerDropdown.ola")}, {authState.user.username}!
                 <svg
                   className="w-2.5 h-2.5 ms-3 group-hover:text-white"
                   aria-hidden="true"
@@ -71,7 +74,7 @@ const Header = ({ selected, onSelect }) => {
                       href="#"
                       className="block px-4 py-2 hover:bg-neutral-600"
                     >
-                      Perfil
+                      {t("headerDropdown.perfil")}
                     </a>
                   </li>
                   <li>
@@ -79,7 +82,7 @@ const Header = ({ selected, onSelect }) => {
                       href="#"
                       className="block px-4 py-2 hover:bg-neutral-600"
                     >
-                      Configurações
+                      {t("headerDropdown.config")}
                     </a>
                   </li>
                 </ul>
@@ -89,7 +92,7 @@ const Header = ({ selected, onSelect }) => {
                     className="block px-4 py-2 text-sm text-white hover:bg-neutral-600"
                     onClick={logout}
                   >
-                    Desconectar
+                    {t("headerDropdown.logout")}
                   </a>
                 </div>
               </div>
@@ -105,13 +108,13 @@ const Header = ({ selected, onSelect }) => {
                 onClickCapture={() => navigate("/login")}
                 className="sign-in border border-zinc-700 bg-zinc-900 px-8 py-2 rounded-3xl cursor-pointer"
               >
-                Fazer Login
+                {t("botoesHeader.fazerLogin")}
               </button>
               <button
                 onClickCapture={() => navigate("/signup")}
                 className="sign-up px-8 py-2 rounded-3xl cursor-pointer"
               >
-                Criar Conta
+                {t("botoesHeader.criarConta")}
               </button>
             </div>
           </div>

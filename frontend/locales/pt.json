@@ -1,0 +1,11 @@
+{
+  "_LINGUAGEM": "Português-BR",
+  "botoesHeader": { "fazerLogin": "Sign In", "criarConta": "Criar Conta" },
+
+  "headerDropdown": {
+    "ola": "Olá",
+    "perfil": "Perfil",
+    "config": "Configurações",
+    "logout": "Desconectar"
+  }
+}
