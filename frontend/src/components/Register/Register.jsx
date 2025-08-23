@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 
 const Register = () => {
+  const { t } = useTranslation();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,14 +23,12 @@ const Register = () => {
           password,
         });
 
-        toast.success("Conta criada com sucesso.");
+        toast.success(t("toastCadastro.success"));
       } else {
-        toast.error("As senhas não são iguais. Tente novamente.");
+        toast.error(t("toastCadastro.error"));
       }
     } catch (error) {
-      toast.error(
-        "Não foi possível criar sua conta. Tente novamente mais tarde."
-      );
+      toast.error(t("toastCadastro.errorerror"));
     }
   };
 
@@ -47,7 +47,7 @@ const Register = () => {
           <div className="w-full bg-neutral-900 border border-zinc-800 rounded-lg md:mt-0 sm:max-w-md xl:p-0">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                Crie sua conta
+                {t("cadastroTitle")}
               </h1>
               <form
                 onSubmit={onSubmitHandler}
@@ -58,7 +58,7 @@ const Register = () => {
                     htmlFor="username"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Usuário
+                    {t("usuario")}
                   </label>
                   <input
                     type="text"
@@ -76,7 +76,7 @@ const Register = () => {
                     htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Email
+                    {t("email")}
                   </label>
                   <input
                     type="email"
@@ -94,7 +94,7 @@ const Register = () => {
                     htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Senha
+                    {t("senha")}
                   </label>
                   <input
                     type="password"
@@ -112,7 +112,7 @@ const Register = () => {
                     htmlFor="confirm-password"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Confirmar Senha
+                    {t("confirmSenha")}
                   </label>
                   <input
                     type="password"
@@ -140,12 +140,12 @@ const Register = () => {
                       htmlFor="terms"
                       className="font-light text-gray-500 dark:text-gray-300"
                     >
-                      Eu aceito os{" "}
+                      {t("euAceito")}{" "}
                       <a
                         className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                         href="#"
                       >
-                        Termos e Condições
+                        {t("termosCond")}
                       </a>
                     </label>
                   </div>
@@ -158,12 +158,12 @@ const Register = () => {
                   Criar conta
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                  Não tem uma conta?{" "}
+                  {t("jaPossui")}{" "}
                   <a
                     href="#"
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
-                    Crie aqui
+                    {t("facaLoginAqui")}
                   </a>
                 </p>
               </form>

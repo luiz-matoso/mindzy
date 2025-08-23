@@ -26,8 +26,8 @@
   },
 
   "toastsLogin": {
-    "loginFeito": "Login bem-sucedido.",
-    "loginErro": "Email ou senha incorretos. Tente novamente."
+    "success": "Login bem-sucedido.",
+    "error": "Email ou senha incorretos. Tente novamente."
   },
 
   "loginTitle": "Faça o seu login",
@@ -35,5 +35,21 @@
   "emailText": "Seu email",
   "emailPlaceholder": "nome@email.com",
   "naoTemUmaConta": "Não tem uma conta?",
-  "crieAqui": "Crie aqui"
+  "crieAqui": "Crie aqui",
+
+  "toastCadastro": {
+    "success": "Conta criada com sucesso.",
+    "error": "As senhas não são iguais. Tente novamente.",
+    "errorerror": "Não foi possível criar sua conta. Tente novamente mais tarde."
+  },
+
+  "cadastroTitle": "Crie sua conta",
+  "usuario": "Usuário",
+  "email": "Email",
+  "confirmSenha": "Confirmar Senha",
+  "euAceito": "Eu aceito os",
+  "termosCond": "Termos e Condições",
+  "criarConta": "Criar Conta",
+  "jaPossui": "Já possui uma conta?",
+  "facaLoginAqui": "Faça login aqui"
 }

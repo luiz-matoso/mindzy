@@ -35,5 +35,21 @@
   "emailText": "Your email",
   "emailPlaceholder": "name@email.com",
   "naoTemUmaConta": "Don't have an account?",
-  "crieAqui": "Sign Up"
+  "crieAqui": "Sign Up",
+
+  "toastCadastro": {
+    "success": "Account created successfully.",
+    "error": "Passwords do not match. Please try again.",
+    "errorerror": "Could not create your account. Please try again later."
+  },
+
+  "cadastroTitle": "Create your account",
+  "usuario": "Username",
+  "email": "Email",
+  "confirmSenha": "Confirm Password",
+  "euAceito": "I accept the",
+  "termosCond": "Terms and Conditions",
+  "criarConta": "Create Account",
+  "jaPossui": "Already have an account?",
+  "facaLoginAqui": "Sign in here"
 }
