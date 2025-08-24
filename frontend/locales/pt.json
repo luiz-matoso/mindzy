@@ -1,7 +1,7 @@
 {
   "_LINGUAGEM": "Português-BR",
 
-  "botoesHeader": { "fazerLogin": "Sign In", "criarConta": "Criar Conta" },
+  "botoesHeader": { "fazerLogin": "Entrar", "criarConta": "Criar Conta" },
 
   "headerDropdown": {
     "ola": "Olá",
