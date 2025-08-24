@@ -51,5 +51,66 @@
   "termosCond": "Termos e Condições",
   "criarConta": "Criar Conta",
   "jaPossui": "Já possui uma conta?",
-  "facaLoginAqui": "Faça login aqui"
+  "facaLoginAqui": "Faça login aqui",
+
+  "mindzy": {
+    "textConfig": {
+      "estudantes": {
+        "Flashcards": {
+          "placeholder": "Ex: Qual a fórmula da água?",
+          "description": "Crie flashcards sobre qualquer assunto.",
+          "buttonText": "Gerar Flashcards"
+        },
+        "Resumo": {
+          "placeholder": "Cole aqui o texto que você deseja resumir...",
+          "description": "Resuma textos longos em segundos.",
+          "buttonText": "Gerar Resumo"
+        },
+        "Explicação": {
+          "placeholder": "Ex: O que é a Teoria da Relatividade?",
+          "description": "Peça uma explicação simples sobre qualquer tópico.",
+          "buttonText": "Gerar Explicação"
+        }
+      },
+      "tecnologia": {
+        "Explicar código": {
+          "placeholder": "Cole um trecho de código aqui...",
+          "description": "Entenda o que um bloco de código faz.",
+          "buttonText": "Explicar Código"
+        },
+        "Criar código": {
+          "placeholder": "Ex: Crie uma função em Python que some dois números",
+          "description": "Gere código em diversas linguagens.",
+          "buttonText": "Criar Código"
+        }
+      },
+      "diversao": {
+        "Piadas": {
+          "placeholder": "Sugira um tema para a piada, como 'programador'",
+          "description": "Para dar umas risadas.",
+          "buttonText": "Gerar Piada"
+        },
+        "Curiosidades": {
+          "placeholder": "Sugira um tema, como 'o espaço'",
+          "description": "Aprenda fatos novos e interessantes.",
+          "buttonText": "Gerar Curiosidade"
+        }
+      }
+    },
+    "novo": "NOVO",
+    "categorias": {
+      "estudantes": "Para estudantes",
+      "tecnologia": "Tecnologia",
+      "diversao": "Diversão"
+    },
+    "subcategorias": {
+      "estudantes": ["Flashcards", "Resumo", "Explicação"],
+      "tecnologia": ["Explicar código", "Criar código"],
+      "diversao": ["Piadas", "Curiosidades"]
+    },
+    "acessoBloqueado": "Acesso Bloqueado",
+    "precisaAutenticar": "Você precisa estar autenticado para usar a categoria \"{{category}}\".",
+    "gerandoResposta": "Gerando resposta...",
+    "resultado": "Resultado:"
+  }
 }

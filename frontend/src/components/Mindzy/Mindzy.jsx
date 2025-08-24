@@ -3,12 +3,7 @@ import Header from "../Header/Header";
 import { Bounce, toast } from "react-toastify";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
-
-const subcategoriesByCategory = {
-  "Para estudantes": ["Flashcards", "Resumo", "Explicação"],
-  Tecnologia: ["Explicar código", "Criar código"],
-  Diversão: ["Piadas", "Curiosidades"],
-};
+import { useTranslation } from "react-i18next";
 
 const Mindzy = forwardRef(
   (
@@ -28,20 +23,20 @@ const Mindzy = forwardRef(
     },
     ref
   ) => {
+    const { t } = useTranslation();
     const textareaRef = useRef(null);
     const [isLoading, setIsLoading] = useState(false);
-    const options = ["Para estudantes", "Tecnologia", "Diversão"];
-    const newBadges = [
-      "Tecnologia",
-      "Diversão",
-      "Explicação",
-      "Explicar código",
-      "Criar código",
-      "Piadas",
-      "Curiosidades",
-    ];
-    const subcategories = subcategoriesByCategory[category] || [];
-    const onlyAuthenticated = ["Tecnologia", "Diversão"];
+    const categoryKeys = ["estudantes", "tecnologia", "diversao"];
+
+    const onlyAuthenticatedKeys = ["tecnologia", "diversao"];
+
+    const newBadgesCategoryKeys = ["tecnologia", "diversao"];
+
+    const subcategoriesData = t("mindzy.subcategorias", {
+      returnObjects: true,
+    });
+
+    const subcategories = subcategoriesData[category] || [];
     const { authState } = useAuth();
 
     const isLoggedIn = authState.token;
@@ -77,24 +72,26 @@ const Mindzy = forwardRef(
             Mindzy
           </h2>
           <div className="flex gap-6">
-            {options.map((option) => (
-              <div key={option} className="relative">
-                {selected === option && (
+            {categoryKeys.map((key) => (
+              <div key={key} className="relative">
+                {selected === key && (
                   <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-600 via-teal-600 to-sky-600 opacity-75 blur-2xl"></div>
                 )}
                 <button
-                  onClick={() => onSelect(option)}
+                  onClick={() => onSelect(key)}
                   className={`relative px-8 py-2 rounded-3xl cursor-pointer transition-all ${
-                    selected === option
+                    selected === key
                       ? "gradient-swap-button-options text-white"
                       : "text-white border border-zinc-700 bg-zinc-900 hover:bg-zinc-700 duration-400 transition-colors"
                   }`}
                 >
-                  <span className="relative z-10">{option}</span>
+                  <span className="relative z-10">
+                    {t(`mindzy.categorias.${key}`)}
+                  </span>
                 </button>
-                {newBadges.includes(option) && (
+                {newBadgesCategoryKeys.includes(key) && (
                   <span className="absolute -top-2 -right-3 z-20 bg-gradient-to-r from-[#fde68a]  to-[#f59e0b] text-black text-xs font-sm px-2.5 py-0.5 rounded-xl">
-                    NOVO
+                    {t("mindzy.novo")}
                   </span>
                 )}
               </div>
@@ -119,7 +116,7 @@ const Mindzy = forwardRef(
               >
                 <span className="relative z-10">{subcat}</span>
               </button>
-              {newBadges.includes(subcat) && (
+              {newBadgesCategoryKeys.includes(subcat) && (
                 <span className="absolute -top-2 -right-3 bg-gradient-to-r from-[#fde68a]  to-[#f59e0b] text-black text-xs font-sm px-2.5 py-0.5 rounded-xl">
                   NOVO
                 </span>
@@ -127,7 +124,7 @@ const Mindzy = forwardRef(
             </div>
           ))}
         </div>
-        {!onlyAuthenticated.includes(selected) || isLoggedIn ? (
+        {!onlyAuthenticatedKeys.includes(selected) || isLoggedIn ? (
           <form onSubmit={handleSubmitWithLoading}>
             <p className="text-2xl text-center mt-8 mb-4 text-gray-400">
               {description}
@@ -158,7 +155,7 @@ const Mindzy = forwardRef(
         ) : (
           <div className="text-center mt-20 p-8 bg-neutral-900 rounded-xl border border-zinc-800">
             <h2 className="text-3xl text-white font-bold mb-4">
-              Acesso Bloqueado
+              {t("mindzy.acessoBloqueado")}
             </h2>
             <div className="flex justify-center m-10">
               <svg
@@ -185,13 +182,13 @@ const Mindzy = forwardRef(
                 to="/login"
                 className="px-8 py-2 border border-zinc-700 bg-zinc-800 text-white rounded-3xl hover:bg-zinc-700 transition-colors"
               >
-                Fazer Login
+                {t("botoesHeader.fazerLogin")}
               </Link>
               <Link
                 to="/signup"
                 className="px-8 py-2 sign-up text-white rounded-3xl"
               >
-                Criar Conta
+                {t("botoesHeader.criarConta")}
               </Link>
             </div>
           </div>
@@ -217,7 +214,7 @@ const Mindzy = forwardRef(
                   fill="currentFill"
                 />
               </svg>
-              <span>Gerando resposta...</span>
+              <span>{t("mindzy.gerandoResposta")}</span>
             </div>
           </div>
         ) : answer ? (
@@ -225,7 +222,9 @@ const Mindzy = forwardRef(
             <div className="relative">
               <div className="bg-neutral-900 p-10 rounded-3xl mt-12">
                 <div className="absolute -z-10 -inset-2 rounded-xl bg-gradient-to-r from-yellow-500/30 via-teal-500/30 to-sky-500/30 opacity-70 blur-lg"></div>
-                <h3 className="text-2xl text-gray-500">Resultado:</h3>
+                <h3 className="text-2xl text-gray-500">
+                  {t("mindzy.resultado")}
+                </h3>
                 <div className="mt-1 p-4 text-gray-500 rounded whitespace-pre-wrap text-2xl">
                   {answer.replace(/^```python|```$/gm, "").trim()}
                 </div>

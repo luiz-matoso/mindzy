@@ -18,12 +18,14 @@ import Login from "./components/Login/Login";
 import { Flip, ToastContainer } from "react-toastify";
 import Register from "./components/Register/Register";
 import Home from "./components/Home/Home";
+import { useTranslation } from "react-i18next";
 
 function App() {
+  const { t } = useTranslation();
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
 
-  const [selectedCategory, setSelectedCategory] = useState("Para estudantes");
+  const [selectedCategory, setSelectedCategory] = useState("estudantes");
   const [selectedSubcategory, setSelectedSubCategory] = useState("Flashcards");
 
   const [placeholder, setPlaceholder] = useState("");
@@ -36,60 +38,78 @@ function App() {
     mindzyRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  function updateTexts(category, subcategory) {
-    const categoryData = config[category];
-    if (categoryData) {
-      const subcatData = categoryData[subcategory];
-      if (subcatData) {
-        setPlaceholder(subcatData.placeholder);
-        setDescription(subcatData.description);
-        setButtonText(subcatData.buttonText);
-      }
-    }
+  function updateTexts(categoryKey, subcategoryText) {
+    const placeholderText = t(
+      `mindzy.textConfig.${categoryKey}.${subcategoryText}.placeholder`
+    );
+    const descriptionText = t(
+      `mindzy.textConfig.${categoryKey}.${subcategoryText}.description`
+    );
+    const buttonTextValue = t(
+      `mindzy.textConfig.${categoryKey}.${subcategoryText}.buttonText`
+    );
+
+    setPlaceholder(placeholderText);
+    setDescription(descriptionText);
+    setButtonText(buttonTextValue);
   }
 
   useEffect(() => {
     updateTexts(selectedCategory, selectedSubcategory);
-  }, [selectedCategory, selectedSubcategory]);
+  }, [selectedCategory, selectedSubcategory, t]);
 
-  function handleCategoryChange(newCategory) {
-    setSelectedCategory(newCategory);
+  function handleCategoryChange(newCategoryKey) {
+    setSelectedCategory(newCategoryKey);
 
-    const firstSubcat = {
-      "Para estudantes": "Flashcards",
-      Tecnologia: "Explicar código",
-      Diversão: "Piadas",
-    }[newCategory];
+    const subcategoriesForNewCategory = t(
+      `mindzy.subcategorias.${newCategoryKey}`,
+      { returnObjects: true }
+    );
+    const firstSubcat = subcategoriesForNewCategory[0];
 
     setSelectedSubCategory(firstSubcat);
   }
-
   async function handleSumbit(e) {
     e.preventDefault();
-    console.log("handleSumbit chamado");
     if (!question.trim()) return;
 
     try {
       let data;
+      const subcatEstudantes = t("mindzy.subcategorias.estudantes", {
+        returnObjects: true,
+      });
+      const subcatTecnologia = t("mindzy.subcategorias.tecnologia", {
+        returnObjects: true,
+      });
+      const subcatDiversao = t("mindzy.subcategorias.diversao", {
+        returnObjects: true,
+      });
 
-      if (selectedCategory === "Para estudantes") {
-        if (selectedSubcategory === "Flashcards") {
+      if (selectedCategory === "estudantes") {
+        if (selectedSubcategory === subcatEstudantes[0]) {
+          // Flashcards
           data = await generateFlashcards(question);
-        } else if (selectedSubcategory === "Resumo") {
+        } else if (selectedSubcategory === subcatEstudantes[1]) {
+          // Resumo
           data = await summarizeText(question);
-        } else if (selectedSubcategory === "Explicação") {
+        } else if (selectedSubcategory === subcatEstudantes[2]) {
+          // Explicação
           data = await explainSubject(question);
         }
-      } else if (selectedCategory === "Tecnologia") {
-        if (selectedSubcategory === "Explicar código") {
+      } else if (selectedCategory === "tecnologia") {
+        if (selectedSubcategory === subcatTecnologia[0]) {
+          // Explicar código
           data = await explainCode(question);
-        } else if (selectedSubcategory === "Criar código") {
+        } else if (selectedSubcategory === subcatTecnologia[1]) {
+          // Criar código
           data = await createCode(question);
         }
-      } else if (selectedCategory === "Diversão") {
-        if (selectedSubcategory === "Piadas") {
+      } else if (selectedCategory === "diversao") {
+        if (selectedSubcategory === subcatDiversao[0]) {
+          // Piadas
           data = await generateJokes(question);
-        } else if (selectedSubcategory === "Curiosidades") {
+        } else if (selectedSubcategory === subcatDiversao[1]) {
+          // Curiosidades
           data = await generateCuriosities(question);
         }
       }

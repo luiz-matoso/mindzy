@@ -51,5 +51,66 @@
   "termosCond": "Terms and Conditions",
   "criarConta": "Create Account",
   "jaPossui": "Already have an account?",
-  "facaLoginAqui": "Sign in here"
+  "facaLoginAqui": "Sign in here",
+
+  "mindzy": {
+    "textConfig": {
+      "estudantes": {
+        "Flashcards": {
+          "placeholder": "Ex: What is the formula for water?",
+          "description": "Create flashcards on any subject.",
+          "buttonText": "Generate Flashcards"
+        },
+        "Summary": {
+          "placeholder": "Paste the text you want to summarize here...",
+          "description": "Summarize long texts in seconds.",
+          "buttonText": "Generate Summary"
+        },
+        "Explanation": {
+          "placeholder": "Ex: What is the Theory of Relativity?",
+          "description": "Ask for a simple explanation on any topic.",
+          "buttonText": "Generate Explanation"
+        }
+      },
+      "tecnologia": {
+        "Explain code": {
+          "placeholder": "Paste a code snippet here...",
+          "description": "Understand what a block of code does.",
+          "buttonText": "Explain Code"
+        },
+        "Create code": {
+          "placeholder": "Ex: Create a Python function that sums two numbers",
+          "description": "Generate code in various languages.",
+          "buttonText": "Create Code"
+        }
+      },
+      "diversao": {
+        "Jokes": {
+          "placeholder": "Suggest a theme for the joke, like 'programmer'",
+          "description": "For a good laugh.",
+          "buttonText": "Generate Joke"
+        },
+        "Trivia": {
+          "placeholder": "Suggest a topic, like 'space'",
+          "description": "Learn new and interesting facts.",
+          "buttonText": "Generate Trivia"
+        }
+      }
+    },
+    "novo": "NEW",
+    "categorias": {
+      "estudantes": "For Students",
+      "tecnologia": "Technology",
+      "diversao": "Fun"
+    },
+    "subcategorias": {
+      "estudantes": ["Flashcards", "Summary", "Explanation"],
+      "tecnologia": ["Explain code", "Create code"],
+      "diversao": ["Jokes", "Trivia"]
+    },
+    "acessoBloqueado": "Access Denied",
+    "precisaAutenticar": "You need to be logged in to use the \"{{category}}\" category.",
+    "gerandoResposta": "Generating answer...",
+    "resultado": "Result:"
+  }
 }
