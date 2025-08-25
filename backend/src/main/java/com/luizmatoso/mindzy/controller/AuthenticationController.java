@@ -2,6 +2,7 @@ package com.luizmatoso.mindzy.controller;
 
 import com.luizmatoso.mindzy.dto.LoginUserDTO;
 import com.luizmatoso.mindzy.dto.RegisterUserDTO;
+import com.luizmatoso.mindzy.dto.ResendCodeDTO;
 import com.luizmatoso.mindzy.dto.VerifyUserDTO;
 import com.luizmatoso.mindzy.model.User;
 import com.luizmatoso.mindzy.responses.LoginResponse;
@@ -47,9 +48,9 @@ public class AuthenticationController {
     }
 
     @PostMapping("/resend")
-    public ResponseEntity<?> resendVerificationCode(@RequestParam String email){
+    public ResponseEntity<?> resendVerificationCode(@RequestBody ResendCodeDTO resendCodeDTO){
         try{
-            authenticationService.resendVerificationCode(email);
+            authenticationService.resendVerificationCode(resendCodeDTO.getEmail());
             return ResponseEntity.ok("Código de verificação enviado");
         } catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());

@@ -19,6 +19,7 @@ import { Flip, ToastContainer } from "react-toastify";
 import Register from "./components/Register/Register";
 import Home from "./components/Home/Home";
 import { useTranslation } from "react-i18next";
+import EmailVerify from "./components/EmailVerify/EmailVerify";
 
 function App() {
   const { t } = useTranslation();
@@ -138,6 +139,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Register />} />
+          <Route path="/verify_account" element={<EmailVerify />} />
           <Route
             path="/"
             element={

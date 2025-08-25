@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Register = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,6 +26,7 @@ const Register = () => {
         });
 
         toast.success(t("toastCadastro.success"));
+        navigate("/verify_account", { state: { email: email } });
       } else {
         toast.error(t("toastCadastro.error"));
       }
