@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Mindzy from "./components/Mindzy/Mindzy";
 import Header from "./components/Header/Header";
-import config from "./utils/config";
 
 import {
   explainCode,
