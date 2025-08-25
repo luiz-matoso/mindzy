@@ -98,15 +98,6 @@ const EmailVerify = () => {
                 >
                   <span className="relative z-10">Verificar conta</span>
                 </button>
-                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                  Não quer verificar no momento?{" "}
-                  <Link
-                    to="/login"
-                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                  >
-                    Pular etapa
-                  </Link>
-                </p>
               </form>
             </div>
           </div>
