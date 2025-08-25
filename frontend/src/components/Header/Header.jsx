@@ -5,6 +5,7 @@ import { initFlowbite } from "flowbite";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "../LanguageSelector/LanguageSelector";
 import UserDropdown from "../UserDropdown/UserDropdown";
+import Logo from "../Logo/Logo";
 
 const Header = () => {
   const { t } = useTranslation();
@@ -23,9 +24,7 @@ const Header = () => {
           <UserDropdown />
         ) : (
           <div className="flex justify-between items-center">
-            <h2 className="text-5xl p-4 animate-gradient cursor-pointer">
-              Mindzy
-            </h2>
+            <Logo />
             <div className="flex items-center gap-4">
               <button
                 onClickCapture={() => navigate("/login")}
