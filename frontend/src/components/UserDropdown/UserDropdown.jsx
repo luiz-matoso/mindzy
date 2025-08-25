@@ -1,5 +1,5 @@
 import { initFlowbite } from "flowbite";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import LanguageSelector from "../LanguageSelector/LanguageSelector";
 import { useTranslation } from "react-i18next";

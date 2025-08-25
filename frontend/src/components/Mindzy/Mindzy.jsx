@@ -1,6 +1,4 @@
-import React, { forwardRef, useEffect, useRef, useState } from "react";
-import Header from "../Header/Header";
-import { Bounce, toast } from "react-toastify";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Flip, toast } from "react-toastify";
 import { useTranslation } from "react-i18next";

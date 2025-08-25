@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"; // 1. Adicione useState e useEffect
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const BrazilFlag = () => (

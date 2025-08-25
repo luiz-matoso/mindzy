@@ -13,12 +13,12 @@ import {
   generateCuriosities,
 } from "./api/aiService";
 import { Route, Routes } from "react-router-dom";
-import Login from "./components/Login/Login";
+import Login from "./pages/Login/Login";
 import { Flip, ToastContainer } from "react-toastify";
-import Register from "./components/Register/Register";
-import Home from "./components/Home/Home";
+import Register from "./pages/Register/Register";
+import Home from "./pages/Home/Home";
 import { useTranslation } from "react-i18next";
-import EmailVerify from "./components/EmailVerify/EmailVerify";
+import EmailVerify from "./pages/EmailVerify/EmailVerify";
 
 function App() {
   const { t } = useTranslation();
