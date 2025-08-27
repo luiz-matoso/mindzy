@@ -36,12 +36,20 @@ body {
   animation: gradient 2s ease infinite;
 }
 
-.animated-gradient-mindzy {
-  background: linear-gradient(to right, #3b82f6, #14b8a6, #f97316);
+.animated-gradient-education {
+  background: linear-gradient(to left, #f3ba10, #3b82f6, #f3ba10);
   background-size: 200%;
   background-clip: text;
   color: transparent;
-  animation: gradient 4s ease infinite;
+  animation: gradient 2s ease infinite;
+}
+
+.animated-gradient-tech {
+  background: linear-gradient(to right, #eab308, #a855f7, #f97316);
+  background-size: 200%;
+  background-clip: text;
+  color: transparent;
+  animation: gradient 2s ease infinite;
 }
 
 .animate-gradient-button {

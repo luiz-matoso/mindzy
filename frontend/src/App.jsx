@@ -19,6 +19,7 @@ import Register from "./pages/Register/Register";
 import Home from "./pages/Home/Home";
 import { useTranslation } from "react-i18next";
 import EmailVerify from "./pages/EmailVerify/EmailVerify";
+import MindzyHub from "./components/MindzyHub/MindzyHub";
 
 function App() {
   const { t } = useTranslation();
@@ -148,6 +149,7 @@ function App() {
                   onSelect={handleCategoryChange}
                 />
                 <Home onScrollClick={handleScrollToMindzy} />
+                <MindzyHub />
                 <Mindzy
                   question={question}
                   setQuestion={setQuestion}
