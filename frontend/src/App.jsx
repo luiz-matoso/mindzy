@@ -19,7 +19,7 @@ import Register from "./pages/Register/Register";
 import Home from "./pages/Home/Home";
 import { useTranslation } from "react-i18next";
 import EmailVerify from "./pages/EmailVerify/EmailVerify";
-import MindzyHub from "./components/MindzyHub/MindzyHub";
+import MindzyHub from "./components/Mindzy/MindzyHub";
 
 function App() {
   const { t } = useTranslation();
@@ -144,27 +144,11 @@ function App() {
             path="/"
             element={
               <>
-                <Header
-                  selected={selectedCategory}
-                  onSelect={handleCategoryChange}
-                />
+                <Header />
                 <Home onScrollClick={handleScrollToMindzy} />
-                <MindzyHub />
-                <Mindzy
-                  question={question}
-                  setQuestion={setQuestion}
-                  answer={answer}
-                  handleSumbit={handleSumbit}
-                  placeholder={placeholder}
-                  description={description}
-                  buttonText={buttonText}
-                  selected={selectedCategory}
-                  onSelect={handleCategoryChange}
-                  category={selectedCategory}
-                  selectedSubcategory={selectedSubcategory}
-                  onSelectSubcategory={setSelectedSubCategory}
-                  ref={mindzyRef}
-                />
+                <div className="mt-24 mb-24 flex justify-center">
+                  <MindzyHub />
+                </div>
               </>
             }
           />

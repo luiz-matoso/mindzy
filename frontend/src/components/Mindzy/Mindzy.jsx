@@ -2,141 +2,101 @@ import { forwardRef, useEffect, useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import FileUpload from "../FileUpload/FileUpload";
+import { toast } from "react-toastify";
 
 const Mindzy = forwardRef(
-  (
-    {
-      question,
-      setQuestion,
-      answer,
-      handleSumbit,
-      placeholder,
-      description,
-      buttonText,
-      selected,
-      category,
-      selectedSubcategory,
-      onSelectSubcategory,
-      onSelect,
-    },
-    ref
-  ) => {
+  ({ options, handleSumbit, answer: propAnswer }, ref) => {
     const { t } = useTranslation();
     const textareaRef = useRef(null);
+
     const [isLoading, setIsLoading] = useState(false);
-    const categoryKeys = ["estudantes", "tecnologia", "diversao"];
+    const [selectedOption, setSelectedOption] = useState(options[0]);
+    const [inputValue, setInputValue] = useState({ text: "", file: null });
 
-    const onlyAuthenticatedKeys = ["tecnologia", "diversao"];
+    const [answer, setAnswer] = useState("");
 
-    const newBadgesCategoryKeys = ["tecnologia", "diversao"];
-
-    const subcategoriesData = t("mindzy.subcategorias", {
-      returnObjects: true,
-    });
-
-    const subcategories = subcategoriesData[category] || [];
     const { authState } = useAuth();
 
-    const isLoggedIn = authState.token;
-
     useEffect(() => {
-      setQuestion("");
-      if (textareaRef.current) {
-        textareaRef.current.focus({ preventScroll: true });
-      }
-    }, [placeholder]);
+      setInputValue({ text: "", file: null });
+      setAnswer("");
+    }, [selectedOption]);
 
     async function handleSubmitWithLoading(e) {
       e.preventDefault();
+      const value =
+        selectedOption.type === "text" ? inputValue.text : inputValue.file;
+      if (!value) {
+        toast.error("Por favor, preencha o campo ou envie um arquivo.");
+        return;
+      }
 
       setIsLoading(true);
+      setAnswer("");
       try {
-        await handleSumbit(e);
+        await new Promise((res) => setTimeout(res, 1500));
+        const testResponse = `Esta é uma resposta de teste para "${selectedOption.label}".`;
+        setAnswer(testResponse);
+      } catch (error) {
+        toast.error("Ocorreu um erro.");
       } finally {
         setIsLoading(false);
       }
     }
 
     function handleChange(e) {
-      setQuestion(e.target.value);
-      textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+      setInputValue({ text: e.target.value, file: null });
+      if (textareaRef.current) {
+        textareaRef.current.style.height = "auto";
+        textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+      }
     }
 
     return (
-      <div ref={ref} className="max-w-[800px] m-auto p-[20px] py-60">
-        <div className="flex flex-col items-center gap-6 py-12 max-w-7xl m-auto p-2">
-          <h2 className="text-5xl p-4 animated-gradient-mindzy cursor-pointer">
-            Mindzy
-          </h2>
-          <div className="flex gap-6">
-            {categoryKeys.map((key) => (
-              <div key={key} className="relative">
-                {selected === key && (
-                  <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-600 via-teal-600 to-sky-600 opacity-75 blur-2xl"></div>
-                )}
-                <button
-                  onClick={() => onSelect(key)}
-                  className={`relative px-8 py-2 rounded-3xl cursor-pointer transition-all ${
-                    selected === key
-                      ? "gradient-swap-button-options text-white"
-                      : "text-white border border-zinc-700 bg-zinc-900 hover:bg-zinc-700 duration-400 transition-colors"
-                  }`}
-                >
-                  <span className="relative z-10">
-                    {t(`mindzy.categorias.${key}`)}
-                  </span>
-                </button>
-                {newBadgesCategoryKeys.includes(key) && (
-                  <span className="absolute -top-2 -right-3 z-20 bg-gradient-to-r from-[#fde68a]  to-[#f59e0b] text-black text-xs font-sm px-2.5 py-0.5 rounded-xl">
-                    {t("mindzy.novo")}
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex justify-center gap-4 mt-[-20px]">
-          {subcategories.map((subcat) => (
-            <div key={subcat} className="relative">
-              {selectedSubcategory === subcat && (
-                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-600 via-teal-600 to-sky-600 opacity-75 blur-2xl cursor-pointer"></div>
+      <div ref={ref} className="max-w-[800px] m-auto p-4">
+        <p className="max-w-xl mx-auto text-gray-400 text-center mb-8 text-lg">
+          {selectedOption.description}
+        </p>
+        <div className="flex justify-center flex-wrap gap-6 mb-8">
+          {options.map((option) => (
+            <div key={option.id} className="relative">
+              {selectedOption.id === option.id && (
+                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-600 via-teal-600 to-sky-600 opacity-75 blur-2xl"></div>
               )}
               <button
-                key={subcat}
-                onClick={() => onSelectSubcategory(subcat)}
-                className={`px-6 py-2 rounded-3xl cursor-pointer ${
-                  selectedSubcategory === subcat
+                onClick={() => setSelectedOption(option)}
+                className={`relative px-8 py-2 rounded-3xl cursor-pointer transition-all ${
+                  selectedOption.id === option.id
                     ? "gradient-swap-button-options text-white"
-                    : "text-white border border-zinc-700"
+                    : "text-white border border-zinc-700 bg-zinc-900 hover:bg-zinc-700 duration-400 transition-colors"
                 }`}
               >
-                <span className="relative z-10">{subcat}</span>
+                <span className="relative z-10 text-lg">{option.label}</span>
               </button>
-              {newBadgesCategoryKeys.includes(subcat) && (
-                <span className="absolute -top-2 -right-3 bg-gradient-to-r from-[#fde68a]  to-[#f59e0b] text-black text-xs font-sm px-2.5 py-0.5 rounded-xl">
-                  NOVO
-                </span>
-              )}
             </div>
           ))}
         </div>
-        {!onlyAuthenticatedKeys.includes(selected) || isLoggedIn ? (
+
+        {authState.token ? (
           <form onSubmit={handleSubmitWithLoading}>
-            <p className="text-2xl text-center mt-8 mb-4 text-gray-400">
-              {description}
-            </p>
-            <div className="bg-neutral-900 rounded-3xl">
-              <textarea
-                ref={textareaRef}
-                className="w-full p-4 resize-none border-none outline-none placeholder:text-center text-2xl text-center bg-gradient-to-r from-purple-500 via-teal-500 to-red-500 text-transparent bg-clip-text min-h-[40px] max-h-[300px] overflow-y-auto"
-                rows={1}
-                value={question}
-                onChange={handleChange}
-                placeholder={placeholder}
+            {selectedOption.type === "text" ? (
+              <div className="bg-neutral-900 rounded-3xl">
+                <textarea
+                  ref={textareaRef}
+                  className="w-full p-4 resize-none border-none outline-none placeholder:text-center text-2xl text-center bg-gradient-to-r from-purple-500 via-teal-500 to-red-500 text-transparent bg-clip-text min-h-[40px] max-h-[300px] overflow-y-auto"
+                  rows={1}
+                  value={inputValue.text}
+                  onChange={handleChange}
+                  placeholder={selectedOption.placeholder}
+                />
+              </div>
+            ) : (
+              <FileUpload
+                file={inputValue.file}
+                setFile={(file) => setInputValue({ text: "", file: file })}
               />
-            </div>
+            )}
 
             <div className="flex justify-center">
               <div className="relative inline-block text-center">
@@ -145,7 +105,7 @@ const Mindzy = forwardRef(
                   type="submit"
                   className="relative bg-gradient-to-l from-[#06b6d4] via-[#0d9488] to-[#15803d] px-4 py-2 rounded-3xl cursor-pointer mt-5 text-white text-2xl"
                 >
-                  {buttonText}
+                  Gerar
                 </button>
               </div>
             </div>
@@ -171,9 +131,8 @@ const Mindzy = forwardRef(
                 />
               </svg>
             </div>
-
             <p className="text-lg text-gray-400 mb-6">
-              Você precisa estar autenticado para usar a categoria "{selected}".
+              Você precisa estar autenticado para usar esta funcionalidade.
             </p>
             <div className="flex gap-4 justify-center">
               <Link
@@ -192,7 +151,7 @@ const Mindzy = forwardRef(
           </div>
         )}
 
-        {isLoading ? (
+        {isLoading && (
           <div className="relative mt-10">
             <div className="absolute -z-10 -inset-2 rounded-xl bg-gradient-to-r from-yellow-500/10 via-teal-500/10 to-sky-500/10 opacity-50 blur-sm"></div>
             <div className="flex items-center justify-center gap-3 p-6 text-gray-500 text-2xl">
@@ -215,7 +174,8 @@ const Mindzy = forwardRef(
               <span>{t("mindzy.gerandoResposta")}</span>
             </div>
           </div>
-        ) : answer ? (
+        )}
+        {!isLoading && answer && (
           <>
             <div className="relative">
               <div className="bg-neutral-900 p-10 rounded-3xl mt-12">
@@ -229,7 +189,7 @@ const Mindzy = forwardRef(
               </div>
             </div>
           </>
-        ) : null}
+        )}
       </div>
     );
   }

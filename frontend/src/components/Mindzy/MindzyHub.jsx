@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Mindzy from "../Mindzy/Mindzy";
+import Mindzy from "./Mindzy";
 
 const MindzyHub = () => {
   const [activeApp, setActiveApp] = useState("education");
@@ -12,8 +12,16 @@ const MindzyHub = () => {
           label: "Estudar Tópico",
           type: "text",
           placeholder: "Sobre o que você quer aprender?",
+          description:
+            "Basta digitar um tema, conceito ou pergunta. Vou gerar um guia de estudos completo, com resumos e pontos-chave, para acelerar seu aprendizado.",
         },
-        { id: "file", label: "Analisar Documento", type: "file" },
+        {
+          id: "file",
+          label: "Estudar PDF",
+          type: "file",
+          description:
+            "Envie seu material de aula em PDF e eu o transformarei em um resumo inteligente, destacando os pontos mais importantes para otimizar seus estudos.",
+        },
       ],
     },
     tech: {
@@ -23,8 +31,16 @@ const MindzyHub = () => {
           label: "Explicar Código",
           type: "text",
           placeholder: "Cole o trecho de código aqui...",
+          description:
+            "Cole qualquer trecho de código e eu o analisarei, explicando a lógica, a função de cada parte e possíveis melhorias. Ideal para aprender e depurar.",
         },
-        { id: "analyze_py", label: "Analisar Arquivo .py", type: "file" },
+        {
+          id: "analyze_py",
+          label: "Analisar Arquivo .py",
+          type: "file",
+          description:
+            "Faça o upload de um arquivo de código em Python para uma análise completa. Vou explicar a estrutura geral, a função de cada classe ou método e sugerir otimizações.",
+        },
       ],
     },
   };
@@ -44,7 +60,7 @@ const MindzyHub = () => {
       <div
         onClick={onClick}
         className={`relative p-4 cursor-pointer transition-opacity ${
-          isActive ? "opacity-100" : "opacity-50 hover:opacity-75"
+          isActive ? "opacity-100" : "opacity-40 hover:opacity-75"
         }`}
       >
         <h2
@@ -67,7 +83,7 @@ const MindzyHub = () => {
 
   return (
     <div className="w-full max-w-[800px] m-auto p-4">
-      <div className="flex justify-center items-center gap-8 mb-10">
+      <div className="flex justify-center items-center gap-8">
         <AppSelector
           appKey="education"
           label=".edu"
