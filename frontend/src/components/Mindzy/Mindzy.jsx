@@ -6,24 +6,30 @@ import FileUpload from "../FileUpload/FileUpload";
 import { toast } from "react-toastify";
 
 const Mindzy = forwardRef(
-  ({ options, handleSumbit, answer: propAnswer }, ref) => {
+  (
+    {
+      options,
+      onSubmit,
+      answer,
+      isLoading,
+      selectedOptionFromHub,
+      onOptionSelect,
+    },
+    ref
+  ) => {
     const { t } = useTranslation();
     const textareaRef = useRef(null);
-
-    const [isLoading, setIsLoading] = useState(false);
+    1;
     const [selectedOption, setSelectedOption] = useState(options[0]);
     const [inputValue, setInputValue] = useState({ text: "", file: null });
-
-    const [answer, setAnswer] = useState("");
 
     const { authState } = useAuth();
 
     useEffect(() => {
       setInputValue({ text: "", file: null });
-      setAnswer("");
     }, [selectedOption]);
 
-    async function handleSubmitWithLoading(e) {
+    function handleSubmitWithLoading(e) {
       e.preventDefault();
       const value =
         selectedOption.type === "text" ? inputValue.text : inputValue.file;
@@ -31,18 +37,11 @@ const Mindzy = forwardRef(
         toast.error("Por favor, preencha o campo ou envie um arquivo.");
         return;
       }
-
-      setIsLoading(true);
-      setAnswer("");
-      try {
-        await new Promise((res) => setTimeout(res, 1500));
-        const testResponse = `Esta é uma resposta de teste para "${selectedOption.label}".`;
-        setAnswer(testResponse);
-      } catch (error) {
-        toast.error("Ocorreu um erro.");
-      } finally {
-        setIsLoading(false);
-      }
+      onSubmit({
+        id: selectedOption.id,
+        type: selectedOption.type,
+        value: value,
+      });
     }
 
     function handleChange(e) {

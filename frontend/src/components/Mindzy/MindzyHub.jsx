@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Mindzy from "./Mindzy";
+import { analyzeDoc, explainTopic } from "../../api/api";
+import { toast } from "react-toastify";
 
 const MindzyHub = () => {
   const [activeApp, setActiveApp] = useState("education");
+
+  const [answer, setAnswer] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const appData = {
     education: {
@@ -14,6 +20,7 @@ const MindzyHub = () => {
           placeholder: "Sobre o que você quer aprender?",
           description:
             "Basta digitar um tema, conceito ou pergunta. Vou gerar um guia de estudos completo, com resumos e pontos-chave, para acelerar seu aprendizado.",
+          api: explainTopic,
         },
         {
           id: "file",
@@ -21,6 +28,7 @@ const MindzyHub = () => {
           type: "file",
           description:
             "Envie seu material de aula em PDF e eu o transformarei em um resumo inteligente, destacando os pontos mais importantes para otimizar seus estudos.",
+          api: analyzeDoc,
         },
       ],
     },
@@ -45,6 +53,37 @@ const MindzyHub = () => {
     },
   };
 
+  useEffect(() => {
+    if (appData[activeApp]) {
+      setSelectedOption(appData[activeApp].options[0]);
+    }
+  }, [activeApp]);
+
+  async function handleSubmit(payload) {
+    setIsLoading(true);
+    setAnswer("");
+
+    const apiFunction = selectedOption?.api;
+
+    if (!apiFunction) {
+      toast.error(
+        "A funcionalidade para esta opção ainda não foi implementada."
+      );
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      toast.info("Processando sua solicitação...");
+      const data = await apiFunction(payload.value);
+      setAnswer(data.response || data);
+    } catch (error) {
+      toast.error("Não foi possível gerar sua resposta.");
+      setAnswer("");
+    } finally {
+      setIsLoading(false);
+    }
+  }
   const AppSelector = ({ appKey, label, isActive, onClick }) => {
     const badgeStyles = {
       education: "bg-neutral-800 text-sky-200",
@@ -98,7 +137,15 @@ const MindzyHub = () => {
         />
       </div>
 
-      <Mindzy key={activeApp} options={appData[activeApp].options} />
+      <Mindzy
+        key={activeApp}
+        options={appData[activeApp].options}
+        onSubmit={handleSubmit}
+        answer={answer}
+        isLoading={isLoading}
+        selectedOption={selectedOption}
+        onOptionSelect={setSelectedOption}
+      />
     </div>
   );
 };
