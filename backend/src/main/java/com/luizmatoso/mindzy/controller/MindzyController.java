@@ -20,11 +20,27 @@ public class MindzyController {
     @PostMapping("/education")
     public Map<String, String> generateFlashcards(@RequestBody Map<String, String> request){
         String topic = request.get("question");
-        String prompt = """
-                Crie flashcards enumerados
-                Crie flashcards com base nesse tema: %s
+
+        String userPrompt = """
+                Por favor, crie um guia de estudos completo sobre o seguinte tema: **%s**.
+
+                Siga estritamente a estrutura solicitada, usando Markdown.
+
+                **Estrutura da Resposta:**
+
+                ## 1. Resumo Rápido
+                (Um parágrafo conciso introduzindo o tema e sua importância.)
+
+                ## 2. Tópicos Principais
+                (Uma lista com '-' dos 3 a 5 conceitos mais importantes sobre o tema, cada um com uma breve explicação.)
+
+                ## 3. Analogia Simplificada
+                (Uma analogia ou exemplo prático que ajude a entender a ideia central do tema de forma simples.)
+
+                ## 4. Flashcards para Memorização
+                (Crie 5 flashcards no formato exato: "P: [Pergunta sobre um ponto chave]\nR: [Resposta direta e curta]")
                 """.formatted(topic);
-        return Map.of("response", aiService.run(prompt, "estudos"));
+        return Map.of("response", aiService.run(userPrompt, "estudos"));
     }
 
     @PostMapping("/tech")
