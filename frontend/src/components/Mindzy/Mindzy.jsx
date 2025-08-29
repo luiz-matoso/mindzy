@@ -177,9 +177,7 @@ const Mindzy = forwardRef(
             <div className="relative">
               <div className="bg-neutral-900 p-10 rounded-3xl mt-12">
                 <div className="absolute -z-10 -inset-2 rounded-xl bg-gradient-to-r from-yellow-500/30 via-teal-500/30 to-sky-500/30 opacity-70 blur-lg"></div>
-                <h3 className="text-2xl text-gray-500">
-                  {t("mindzy.resultado")}
-                </h3>
+                <h3 className="text-2xl text-gray-500">{t("resultado")}</h3>
                 <div className="prose prose-invert prose-lg max-w-none text-gray-300">
                   <ReactMarkdown>{answer}</ReactMarkdown>
                 </div>
