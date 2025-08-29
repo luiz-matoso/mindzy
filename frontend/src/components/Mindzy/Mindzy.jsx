@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import FileUpload from "../FileUpload/FileUpload";
 import { toast } from "react-toastify";
+import ReactMarkdown from "react-markdown";
 
 const Mindzy = forwardRef(
   (
@@ -179,8 +180,8 @@ const Mindzy = forwardRef(
                 <h3 className="text-2xl text-gray-500">
                   {t("mindzy.resultado")}
                 </h3>
-                <div className="mt-1 p-4 text-gray-500 rounded whitespace-pre-wrap text-2xl">
-                  {answer.replace(/^```python|```$/gm, "").trim()}
+                <div className="prose prose-invert prose-lg max-w-none text-gray-300">
+                  <ReactMarkdown>{answer}</ReactMarkdown>
                 </div>
               </div>
             </div>
