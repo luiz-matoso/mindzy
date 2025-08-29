@@ -53,64 +53,33 @@
   "jaPossui": "Já possui uma conta?",
   "facaLoginAqui": "Faça login aqui",
 
-  "mindzy": {
-    "textConfig": {
-      "estudantes": {
-        "Flashcards": {
-          "placeholder": "Ex: Qual a fórmula da água?",
-          "description": "Crie flashcards sobre qualquer assunto.",
-          "buttonText": "Gerar Flashcards"
-        },
-        "Resumo": {
-          "placeholder": "Cole aqui o texto que você deseja resumir...",
-          "description": "Resuma textos longos em segundos.",
-          "buttonText": "Gerar Resumo"
-        },
-        "Explicação": {
-          "placeholder": "Ex: O que é a Teoria da Relatividade?",
-          "description": "Peça uma explicação simples sobre qualquer tópico.",
-          "buttonText": "Gerar Explicação"
-        }
+  "acessoBloqueado": "Acesso Bloqueado",
+  "precisaAutenticar": "Você precisa estar autenticado para usar essa funcionalidade.",
+  "gerandoResposta": "Gerando resposta...",
+  "resultado": "Resultado:",
+
+  "mindzyHub": {
+    "education": {
+      "topic": {
+        "label": "Estudar Tópico",
+        "placeholder": "Sobre o que você quer aprender?",
+        "description": "Basta digitar um tema, conceito ou pergunta. Vou gerar um guia de estudos completo, com resumos e pontos-chave, para acelerar seu aprendizado."
       },
-      "tecnologia": {
-        "Explicar código": {
-          "placeholder": "Cole um trecho de código aqui...",
-          "description": "Entenda o que um bloco de código faz.",
-          "buttonText": "Explicar Código"
-        },
-        "Criar código": {
-          "placeholder": "Ex: Crie uma função em Python que some dois números",
-          "description": "Gere código em diversas linguagens.",
-          "buttonText": "Criar Código"
-        }
-      },
-      "diversao": {
-        "Piadas": {
-          "placeholder": "Sugira um tema para a piada, como 'programador'",
-          "description": "Para dar umas risadas.",
-          "buttonText": "Gerar Piada"
-        },
-        "Curiosidades": {
-          "placeholder": "Sugira um tema, como 'o espaço'",
-          "description": "Aprenda fatos novos e interessantes.",
-          "buttonText": "Gerar Curiosidade"
-        }
+      "file": {
+        "label": "Estudar PDF",
+        "description": "Envie seu material de aula em PDF e eu o transformarei em um resumo inteligente, destacando os pontos mais importantes para otimizar seus estudos."
       }
     },
-    "novo": "NOVO",
-    "categorias": {
-      "estudantes": "Para estudantes",
-      "tecnologia": "Tecnologia",
-      "diversao": "Diversão"
-    },
-    "subcategorias": {
-      "estudantes": ["Flashcards", "Resumo", "Explicação"],
-      "tecnologia": ["Explicar código", "Criar código"],
-      "diversao": ["Piadas", "Curiosidades"]
-    },
-    "acessoBloqueado": "Acesso Bloqueado",
-    "precisaAutenticar": "Você precisa estar autenticado para usar a categoria \"{{category}}\".",
-    "gerandoResposta": "Gerando resposta...",
-    "resultado": "Resultado:"
+    "tech": {
+      "explain_code": {
+        "label": "Explicar Código",
+        "placeholder": "Cole o trecho de código aqui...",
+        "description": "Cole qualquer trecho de código e eu o analisarei, explicando a lógica, a função de cada parte e possíveis melhorias. Ideal para aprender e depurar."
+      },
+      "analyze_py": {
+        "label": "Analisar Arquivo .py",
+        "description": "Faça o upload de um arquivo de código em Python para uma análise completa. Vou explicar a estrutura geral, a função de cada classe ou método e sugerir otimizações."
+      }
+    }
   }
 }

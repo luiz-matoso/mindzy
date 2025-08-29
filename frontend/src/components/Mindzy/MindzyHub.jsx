@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import Mindzy from "./Mindzy";
 import { analyzeDoc, explainTopic } from "../../api/api";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const MindzyHub = () => {
+  const { t } = useTranslation();
+
   const [activeApp, setActiveApp] = useState("education");
 
   const [answer, setAnswer] = useState("");
@@ -15,19 +18,17 @@ const MindzyHub = () => {
       options: [
         {
           id: "topic",
-          label: "Estudar Tópico",
+          label: t("mindzyHub.education.topic.label"),
           type: "text",
-          placeholder: "Sobre o que você quer aprender?",
-          description:
-            "Basta digitar um tema, conceito ou pergunta. Vou gerar um guia de estudos completo, com resumos e pontos-chave, para acelerar seu aprendizado.",
+          placeholder: t("mindzyHub.education.topic.placeholder"),
+          description: t("mindzyHub.education.topic.description"),
           api: explainTopic,
         },
         {
           id: "file",
-          label: "Estudar PDF",
+          label: t("mindzyHub.education.file.label"),
           type: "file",
-          description:
-            "Envie seu material de aula em PDF e eu o transformarei em um resumo inteligente, destacando os pontos mais importantes para otimizar seus estudos.",
+          description: t("mindzyHub.education.file.description"),
           api: analyzeDoc,
         },
       ],
@@ -36,18 +37,16 @@ const MindzyHub = () => {
       options: [
         {
           id: "explain_code",
-          label: "Explicar Código",
+          label: t("mindzyHub.tech.explain_code.label"),
           type: "text",
-          placeholder: "Cole o trecho de código aqui...",
-          description:
-            "Cole qualquer trecho de código e eu o analisarei, explicando a lógica, a função de cada parte e possíveis melhorias. Ideal para aprender e depurar.",
+          placeholder: t("mindzyHub.tech.explain_code.placeholder"),
+          description: t("mindzyHub.tech.explain_code.description"),
         },
         {
           id: "analyze_py",
-          label: "Analisar Arquivo .py",
+          label: t("mindzyHub.tech.analyze_py.label"),
           type: "file",
-          description:
-            "Faça o upload de um arquivo de código em Python para uma análise completa. Vou explicar a estrutura geral, a função de cada classe ou método e sugerir otimizações.",
+          description: t("mindzyHub.tech.analyze_py.description"),
         },
       ],
     },
@@ -57,7 +56,7 @@ const MindzyHub = () => {
     if (appData[activeApp]) {
       setSelectedOption(appData[activeApp].options[0]);
     }
-  }, [activeApp]);
+  }, [activeApp, t]);
 
   async function handleSubmit(payload) {
     setIsLoading(true);

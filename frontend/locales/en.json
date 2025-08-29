@@ -53,64 +53,33 @@
   "jaPossui": "Already have an account?",
   "facaLoginAqui": "Sign in here",
 
-  "mindzy": {
-    "textConfig": {
-      "estudantes": {
-        "Flashcards": {
-          "placeholder": "Ex: What is the formula for water?",
-          "description": "Create flashcards on any subject.",
-          "buttonText": "Generate Flashcards"
-        },
-        "Summary": {
-          "placeholder": "Paste the text you want to summarize here...",
-          "description": "Summarize long texts in seconds.",
-          "buttonText": "Generate Summary"
-        },
-        "Explanation": {
-          "placeholder": "Ex: What is the Theory of Relativity?",
-          "description": "Ask for a simple explanation on any topic.",
-          "buttonText": "Generate Explanation"
-        }
+  "acessoBloqueado": "Access Denied",
+  "precisaAutenticar": "You need to be authenticated to use this functionality.",
+  "gerandoResposta": "Generating answer...",
+  "resultado": "Result:",
+
+  "mindzyHub": {
+    "education": {
+      "topic": {
+        "label": "Study Topic",
+        "placeholder": "What do you want to learn about?",
+        "description": "Just type a theme, concept, or question. I will generate a complete study guide, with summaries and key points, to speed up your learning."
       },
-      "tecnologia": {
-        "Explain code": {
-          "placeholder": "Paste a code snippet here...",
-          "description": "Understand what a block of code does.",
-          "buttonText": "Explain Code"
-        },
-        "Create code": {
-          "placeholder": "Ex: Create a Python function that sums two numbers",
-          "description": "Generate code in various languages.",
-          "buttonText": "Create Code"
-        }
-      },
-      "diversao": {
-        "Jokes": {
-          "placeholder": "Suggest a theme for the joke, like 'programmer'",
-          "description": "For a good laugh.",
-          "buttonText": "Generate Joke"
-        },
-        "Trivia": {
-          "placeholder": "Suggest a topic, like 'space'",
-          "description": "Learn new and interesting facts.",
-          "buttonText": "Generate Trivia"
-        }
+      "file": {
+        "label": "Study PDF",
+        "description": "Upload your PDF class material, and I'll turn it into a smart summary, highlighting the key points to optimize your studies."
       }
     },
-    "novo": "NEW",
-    "categorias": {
-      "estudantes": "For Students",
-      "tecnologia": "Technology",
-      "diversao": "Fun"
-    },
-    "subcategorias": {
-      "estudantes": ["Flashcards", "Summary", "Explanation"],
-      "tecnologia": ["Explain code", "Create code"],
-      "diversao": ["Jokes", "Trivia"]
-    },
-    "acessoBloqueado": "Access Denied",
-    "precisaAutenticar": "You need to be logged in to use the \"{{category}}\" category.",
-    "gerandoResposta": "Generating answer...",
-    "resultado": "Result:"
+    "tech": {
+      "explain_code": {
+        "label": "Explain Code",
+        "placeholder": "Paste the code snippet here...",
+        "description": "Paste any code snippet and I will analyze it, explaining the logic, the function of each part, and possible improvements. Ideal for learning and debugging."
+      },
+      "analyze_py": {
+        "label": "Analyze .py File",
+        "description": "Upload a Python code file for a complete analysis. I will explain the general structure, the function of each class or method, and suggest optimizations."
+      }
+    }
   }
 }

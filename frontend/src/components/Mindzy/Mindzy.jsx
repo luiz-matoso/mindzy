@@ -7,20 +7,11 @@ import { toast } from "react-toastify";
 
 const Mindzy = forwardRef(
   (
-    {
-      options,
-      onSubmit,
-      answer,
-      isLoading,
-      selectedOptionFromHub,
-      onOptionSelect,
-    },
+    { options, onSubmit, answer, isLoading, selectedOption, onOptionSelect },
     ref
   ) => {
     const { t } = useTranslation();
     const textareaRef = useRef(null);
-    1;
-    const [selectedOption, setSelectedOption] = useState(options[0]);
     const [inputValue, setInputValue] = useState({ text: "", file: null });
 
     const { authState } = useAuth();
@@ -31,6 +22,8 @@ const Mindzy = forwardRef(
 
     function handleSubmitWithLoading(e) {
       e.preventDefault();
+      if (!selectedOption) return;
+
       const value =
         selectedOption.type === "text" ? inputValue.text : inputValue.file;
       if (!value) {
@@ -52,6 +45,10 @@ const Mindzy = forwardRef(
       }
     }
 
+    if (!selectedOption) {
+      return null;
+    }
+
     return (
       <div ref={ref} className="max-w-[800px] m-auto p-4">
         <p className="max-w-xl mx-auto text-gray-400 text-center mb-8 text-lg">
@@ -64,7 +61,7 @@ const Mindzy = forwardRef(
                 <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-yellow-600 via-teal-600 to-sky-600 opacity-75 blur-2xl"></div>
               )}
               <button
-                onClick={() => setSelectedOption(option)}
+                onClick={() => onOptionSelect(option)}
                 className={`relative px-8 py-2 rounded-3xl cursor-pointer transition-all ${
                   selectedOption.id === option.id
                     ? "gradient-swap-button-options text-white"
@@ -112,7 +109,7 @@ const Mindzy = forwardRef(
         ) : (
           <div className="text-center mt-20 p-8 bg-neutral-900 rounded-xl border border-zinc-800">
             <h2 className="text-3xl text-white font-bold mb-4">
-              {t("mindzy.acessoBloqueado")}
+              {t("acessoBloqueado")}
             </h2>
             <div className="flex justify-center m-10">
               <svg
@@ -131,7 +128,7 @@ const Mindzy = forwardRef(
               </svg>
             </div>
             <p className="text-lg text-gray-400 mb-6">
-              Você precisa estar autenticado para usar esta funcionalidade.
+              {t("precisaAutenticar")}
             </p>
             <div className="flex gap-4 justify-center">
               <Link
