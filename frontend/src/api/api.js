@@ -25,7 +25,7 @@ apiClient.interceptors.request.use(
 
 export const explainTopic = async (topic) => {
   try {
-    const response = await apiClient.post("/flashcards", {
+    const response = await apiClient.post("/mindzy/education", {
       // flashcards é provisório, mudar depois apos refatoração no back
       question: topic,
     });
