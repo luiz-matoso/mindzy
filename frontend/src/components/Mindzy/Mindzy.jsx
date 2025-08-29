@@ -168,7 +168,7 @@ const Mindzy = forwardRef(
                   fill="currentFill"
                 />
               </svg>
-              <span>{t("mindzy.gerandoResposta")}</span>
+              <span>{t("gerandoResposta")}</span>
             </div>
           </div>
         )}
