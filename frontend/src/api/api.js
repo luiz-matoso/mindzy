@@ -31,8 +31,7 @@ export const explainTopic = async (topic) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Debug - erro na api");
-    throw error;
+    toast.error("Houve um erro. Tente novamente mais tarde.");
   }
 };
 
@@ -48,7 +47,6 @@ export const analyzeDoc = async (file) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Debug - erro na api");
-    throw error;
+    toast.error("Houve um erro. Tente novamente mais tarde.");
   }
 };

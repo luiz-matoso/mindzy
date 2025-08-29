@@ -78,7 +78,9 @@ const MindzyHub = () => {
       const data = await apiFunction(payload.value);
       setAnswer(data.response || data);
     } catch (error) {
-      toast.error("Não foi possível gerar sua resposta.");
+      toast.error(
+        "Não foi possível gerar sua resposta. Tente novamente mais tarde."
+      );
       setAnswer("");
     } finally {
       setIsLoading(false);
