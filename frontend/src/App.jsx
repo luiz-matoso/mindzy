@@ -49,7 +49,7 @@ function App() {
                 <Home onScrollClick={handleScrollToMindzy} />
                 <div
                   ref={mindzyRef}
-                  className="mt-24 mb-24 flex justify-center"
+                  className="mt-60 mb-60 flex justify-center"
                 >
                   <MindzyHub />
                 </div>

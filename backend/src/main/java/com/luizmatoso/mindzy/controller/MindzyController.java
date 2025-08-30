@@ -25,6 +25,7 @@ public class MindzyController {
                 Por favor, crie um guia de estudos completo sobre o seguinte tema: **%s**.
 
                 Siga estritamente a estrutura solicitada, usando Markdown.
+                Use Markdown para formatação (títulos com '##', listas com '-', negrito com '**').
 
                 **Estrutura da Resposta:**
 

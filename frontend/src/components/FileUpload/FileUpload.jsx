@@ -73,7 +73,7 @@ const FileUpload = ({ file, setFile }) => {
       onDragOver={handleDrag}
       onDrop={handleDrop}
       onClick={onButtonClick}
-      className={`text-center p-30 border-2 border-dashed rounded-2xl cursor-pointer transition-all duration-300
+      className={`text-center p-28 border-2 border-dashed rounded-2xl cursor-pointer transition-all duration-300
         ${
           isDragging
             ? "border-sky-500 bg-neutral-800"
