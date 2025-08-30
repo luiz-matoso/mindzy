@@ -55,6 +55,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("userSession");
     setAuthState({ token: null, user: null });
     delete axios.defaults.headers.common["Authorization"];
+    location.reload();
   };
 
   return (

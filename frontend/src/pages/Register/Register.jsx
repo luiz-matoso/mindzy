@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import AuthCard from "../../components/AuthCard/AuthCard";
 
@@ -148,12 +148,12 @@ const Register = () => {
         </button>
         <p className="text-sm font-light text-gray-500 dark:text-gray-400">
           {t("jaPossui")}{" "}
-          <a
-            href="#"
+          <Link
+            to="/login"
             className="font-medium text-primary-600 hover:underline dark:text-primary-500"
           >
             {t("facaLoginAqui")}
-          </a>
+          </Link>
         </p>
       </form>
     </AuthCard>

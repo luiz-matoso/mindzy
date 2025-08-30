@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../../context/AuthContext";
 import { useTranslation } from "react-i18next";
@@ -86,12 +86,12 @@ const Login = () => {
         </button>
         <p className="text-sm font-light text-gray-500 dark:text-gray-400">
           {t("naoTemUmaConta")}{" "}
-          <a
-            href="#"
+          <Link
+            to="/signup"
             className="font-medium text-primary-600 hover:underline dark:text-primary-500"
           >
             {t("crieAqui")}
-          </a>
+          </Link>
         </p>
       </form>
     </AuthCard>
