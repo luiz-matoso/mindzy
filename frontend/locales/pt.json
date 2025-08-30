@@ -81,5 +81,12 @@
         "description": "Faça o upload de um arquivo de código em Python para uma análise completa. Vou explicar a estrutura geral, a função de cada classe ou método e sugerir otimizações."
       }
     }
-  }
+  },
+
+  "toastNaoPreenchido": "Por favor, preencha o campo ou envie um arquivo.",
+  "toastArqErrado": "Por favor, envie apenas arquivos PDF ou DOCX.",
+  "aqrCarregado": "Arquivo carregado:",
+  "removerArq": "Remover Arquivo",
+  "arrastePdf": "Arraste e solte seu PDF aqui",
+  "ouClique": "ou clique para selecionar"
 }

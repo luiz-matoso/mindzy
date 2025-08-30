@@ -81,5 +81,12 @@
         "description": "Upload a Python code file for a complete analysis. I will explain the general structure, the function of each class or method, and suggest optimizations."
       }
     }
-  }
+  },
+
+  "toastNaoPreenchido": "Please fill in the field or upload a file.",
+  "toastArqErrado": "Please upload PDF or DOCX files only.",
+  "aqrCarregado": "File uploaded:",
+  "removerArq": "Remove File",
+  "arrastePdf": "Drag and drop your PDF here",
+  "ouClique": "or click to select"
 }

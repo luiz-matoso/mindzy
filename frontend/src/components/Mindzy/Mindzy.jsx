@@ -28,7 +28,7 @@ const Mindzy = forwardRef(
       const value =
         selectedOption.type === "text" ? inputValue.text : inputValue.file;
       if (!value) {
-        toast.error("Por favor, preencha o campo ou envie um arquivo.");
+        toast.error(t("toastNaoPreenchido"));
         return;
       }
       onSubmit({

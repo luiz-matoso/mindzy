@@ -1,6 +1,9 @@
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 const FileUpload = ({ file, setFile }) => {
+  const { t } = useTranslation();
   const [isDragging, setIsDragging] = useState(false);
   const inputRef = useRef(null);
 
@@ -31,7 +34,7 @@ const FileUpload = ({ file, setFile }) => {
       ) {
         setFile(e.dataTransfer.files[0]);
       } else {
-        alert("Por favor, envie apenas arquivos PDF ou DOCX.");
+        toast.warn(t("toastArqErrado"));
       }
     }
   };
@@ -53,14 +56,14 @@ const FileUpload = ({ file, setFile }) => {
 
   if (file) {
     return (
-      <div className="text-center p-26 bg-neutral-900 rounded-xl border border-cyan-900">
-        <p className="text-xl text-white">Arquivo carregado:</p>
+      <div className="text-center p-28 bg-neutral-900 rounded-xl border border-cyan-400">
+        <p className="text-xl text-white">{t("aqrCarregado")}</p>
         <p className="text-lg text-gray-300 mt-2">{file.name}</p>
         <button
           onClick={removeFile}
           className="mt-4 px-4 py-2 text-sm bg-red-800 text-white rounded-lg hover:bg-red-900 cursor-pointer transition-colors"
         >
-          Remover Arquivo
+          {t("removerArq")}
         </button>
       </div>
     );
@@ -87,8 +90,8 @@ const FileUpload = ({ file, setFile }) => {
         onChange={handleChange}
         accept=".pdf,.docx"
       />
-      <p className="text-gray-400">Arraste e solte seu PDF aqui</p>
-      <p className="text-gray-500 text-sm mt-2">ou clique para selecionar</p>
+      <p className="text-gray-400">{t("arrastePdf")}</p>
+      <p className="text-gray-500 text-sm mt-2">{t("ouClique")}</p>
     </div>
   );
 };
