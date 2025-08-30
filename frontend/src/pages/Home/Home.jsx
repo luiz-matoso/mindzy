@@ -53,7 +53,7 @@ const Home = ({ onScrollClick }) => {
   return (
     <section>
       {!isLoggedIn ? (
-        <div className="py-8 px-2 mx-auto max-w-screen-xl text-center lg:py-30 lg:px-12">
+        <div className="py-8 px-2 mx-auto max-w-screen-xl text-center lg:py-28 lg:px-12">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
             {t("homeAutenticado.titulo")}
           </h1>
@@ -88,7 +88,7 @@ const Home = ({ onScrollClick }) => {
           </div>
         </div>
       ) : (
-        <div className="py-8 px-2 mx-auto max-w-screen-xl text-center lg:py-30 lg:px-12">
+        <div className="py-8 px-2 mx-auto max-w-screen-xl text-center lg:py-28 lg:px-12">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
             {t("homeAutenticado.titulo")}
           </h1>
