@@ -88,5 +88,14 @@
   "aqrCarregado": "Arquivo carregado:",
   "removerArq": "Remover Arquivo",
   "arrastePdf": "Arraste e solte seu PDF aqui",
-  "ouClique": "ou clique para selecionar"
+  "ouClique": "ou clique para selecionar",
+
+  "erroCarregarHistorico": "Ocorreu um erro ao tentar carregar seu histórico. Tente novamente mais tarde.",
+  "itemDeletado": "Resposta exclúida com sucesso.",
+  "erroDeletarItem": "Ocorreu um erro ao tentar apagar sua resposta. Tente novamente mais tarde.",
+  "historicoRespostas": "Histórico de Respostas",
+  "cliqueAquiRespostas": "Clique para ver e recarregar suas conversas anteriores.",
+  "historico": "Histórico",
+  "carregando": "Carregando...",
+  "historicoVazio": "Seu histórico está vazio."
 }

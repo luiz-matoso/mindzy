@@ -154,9 +154,9 @@ const MindzyHub = () => {
             className="absolute left-full ml-3 w-[240px] max-w-xs p-3
                bg-neutral-800 text-white text-sm rounded-xl shadow-lg z-10"
           >
-            <p className="font-semibold">Histórico de Respostas</p>
+            <p className="font-semibold">{t("historicoRespostas")}</p>
             <p className="text-xs text-neutral-300 mt-1">
-              Clique para ver e recarregar suas conversas anteriores.
+              {t("cliqueAquiRespostas")}
             </p>
             <div
               className="absolute top-1/2 -left-1 w-2 h-2 

@@ -88,5 +88,14 @@
   "aqrCarregado": "File uploaded:",
   "removerArq": "Remove File",
   "arrastePdf": "Drag and drop your PDF here",
-  "ouClique": "or click to select"
+  "ouClique": "or click to select",
+
+  "erroCarregarHistorico": "An error occurred while trying to load your history. Please try again later.",
+  "itemDeletado": "Response deleted successfully.",
+  "erroDeletarItem": "An error occurred while trying to delete your response. Please try again later.",
+  "historicoRespostas": "Response History",
+  "cliqueAquiRespostas": "Click to view and reload your previous conversations.",
+  "historico": "History",
+  "carregando": "Loading...",
+  "historicoVazio": "Your history is empty."
 }

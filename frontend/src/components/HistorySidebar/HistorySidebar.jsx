@@ -29,16 +29,14 @@ const HistorySidebar = ({ isOpen, onClose, onViewItem }) => {
 
   async function handleDelete(id, e) {
     e.stopPropagation();
-    if (window.confirm(t("confirmarDelecao"))) {
-      try {
-        await deleteHistoryItem(id);
-        setHistoryItems((prevItems) =>
-          prevItems.filter((item) => item.id !== id)
-        );
-        toast.success(t("itemDeletado"));
-      } catch (error) {
-        console.log(error);
-      }
+    try {
+      await deleteHistoryItem(id);
+      setHistoryItems((prevItems) =>
+        prevItems.filter((item) => item.id !== id)
+      );
+      toast.success(t("itemDeletado"));
+    } catch (error) {
+      toast.error(t("erroDeletarItem"));
     }
   }
 
