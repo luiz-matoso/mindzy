@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/mindzy/history")
@@ -29,5 +30,11 @@ public class HistoryController {
         String answer = payload.get("answer");
         HistoryResponse savedAnswer = historyService.saveAnswer(topic, answer);
         return ResponseEntity.ok(savedAnswer);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteHistory(@PathVariable UUID id){
+        historyService.deleteAnswer(id);
+        return ResponseEntity.noContent().build();
     }
 }

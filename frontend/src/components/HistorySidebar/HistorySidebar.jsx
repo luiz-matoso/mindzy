@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { FaTrash } from "react-icons/fa";
-import { getHistory } from "../../api/api";
+import { deleteHistoryItem, getHistory } from "../../api/api";
 
 const HistorySidebar = ({ isOpen, onClose, onViewItem }) => {
   const { t } = useTranslation();
@@ -37,7 +37,7 @@ const HistorySidebar = ({ isOpen, onClose, onViewItem }) => {
         );
         toast.success(t("itemDeletado"));
       } catch (error) {
-        toast.error(t("erroDeletarItem"));
+        console.log(error);
       }
     }
   }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,12 +58,28 @@ public class HistoryService {
         return convertToHistoryResponse(savedAnswer);
     }
 
-    public List<com.luizmatoso.mindzy.responses.HistoryResponse> findHistoryForCurrentUser(){
+    public List<HistoryResponse> findHistoryForCurrentUser(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<GeneratedAnswer> historyEntities = generatedAnswerRepository.findByUserOrderByCreatedAtDesc(user);
 
         return historyEntities.stream()
                 .map(this::convertToHistoryResponse)
                 .collect(Collectors.toList());
+    }
+
+    public void deleteAnswer(UUID id){
+        User principal = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        GeneratedAnswer answer = generatedAnswerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Resposta não encontrada."));
+
+        User managedUser = userRepository.findById(principal.getId())
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+
+        if (!answer.getUser().getId().equals(managedUser.getId())) {
+            throw new SecurityException("Acesso negado.");
+        }
+
+        generatedAnswerRepository.delete(answer);
     }
 }
