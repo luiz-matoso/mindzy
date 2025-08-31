@@ -13,9 +13,14 @@ const HistorySidebar = ({ isOpen, onClose, onViewItem }) => {
     setIsLoading(true);
     try {
       const data = await getHistory();
-      setHistoryItems(data);
+      if (Array.isArray(data)) {
+        setHistoryItems(data);
+      } else {
+        setHistoryItems([]);
+      }
     } catch (error) {
-      toast.error(t("erroCarregarHistorico"));
+      toast.error(t("erroCarregarHistorico", "Erro ao carregar o histórico."));
+      setHistoryItems([]);
     } finally {
       setIsLoading(false);
     }

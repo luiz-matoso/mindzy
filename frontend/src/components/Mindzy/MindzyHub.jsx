@@ -127,7 +127,7 @@ const MindzyHub = () => {
 
   return (
     <div className="w-full max-w-[800px] m-auto p-4">
-      <div className="flex justify-center items-center gap-8 mb-10">
+      <div className="flex justify-center items-center gap-8 mb-2">
         <AppSelector
           appKey="education"
           label=".edu"
