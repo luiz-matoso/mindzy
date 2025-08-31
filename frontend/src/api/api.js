@@ -21,6 +21,38 @@ apiClient.interceptors.request.use(
   }
 );
 
+// Mindzy - Histórico
+// Mindzy - History
+
+export const getHistory = async () => {
+  try {
+    const response = await apiClient.get("/mindzy/history");
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao buscar histórico:", error);
+    throw error;
+  }
+};
+
+export const saveHistory = async (topic, answer) => {
+  try {
+    const response = await apiClient.post("/mindzy/history", { topic, answer });
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao salvar no histórico:", error);
+    throw error;
+  }
+};
+
+export const deleteHistoryItem = async (id) => {
+  try {
+    await apiClient.delete(`/mindzy/history/${id}`);
+  } catch (error) {
+    console.error("Erro ao deletar item do histórico:", error);
+    throw error;
+  }
+};
+
 // Mindzy.EDU
 
 export const explainTopic = async (topic) => {

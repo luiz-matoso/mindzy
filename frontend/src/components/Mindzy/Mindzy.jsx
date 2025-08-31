@@ -21,6 +21,15 @@ const Mindzy = forwardRef(
       setInputValue({ text: "", file: null });
     }, [selectedOption]);
 
+    useEffect(() => {
+      if (answer) {
+        const element = ref?.current;
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }, [answer, ref]);
+
     function handleSubmitWithLoading(e) {
       e.preventDefault();
       if (!selectedOption) return;
