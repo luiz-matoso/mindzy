@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/docs")
 public class DocumentController {
@@ -21,17 +24,8 @@ public class DocumentController {
     }
 
     @PostMapping("/process")
-    public ResponseEntity<String> processDocument(@RequestParam("file") MultipartFile file) {
-        if (file.isEmpty()) {
-            return ResponseEntity.badRequest().body("Por favor, envie um arquivo.");
-        }
-
-        try {
+    public ResponseEntity<Map<String, String>> processDocument(@RequestParam("file") MultipartFile file) throws IOException {
             String aiResult = documentProcessingService.processFileAndSendToAi(file);
-            return ResponseEntity.ok(aiResult);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.internalServerError().body("Erro ao processar o arquivo: " + e.getMessage());
-        }
+            return ResponseEntity.ok(Map.of("response", aiResult));
     }
 }
