@@ -5,15 +5,26 @@ import { useTranslation } from "react-i18next";
 import FileUpload from "../FileUpload/FileUpload";
 import { toast } from "react-toastify";
 import ReactMarkdown from "react-markdown";
+import useTypewriter from "../../hooks/useTypewriter";
 
 const Mindzy = forwardRef(
   (
-    { options, onSubmit, answer, isLoading, selectedOption, onOptionSelect },
+    {
+      options,
+      onSubmit,
+      answer,
+      isLoading,
+      selectedOption,
+      onOptionSelect,
+      answerAnimation,
+    },
     ref
   ) => {
     const { t } = useTranslation();
     const textareaRef = useRef(null);
     const [inputValue, setInputValue] = useState({ text: "", file: null });
+
+    const displayAnswer = useTypewriter(answer, 4, answerAnimation);
 
     const { authState } = useAuth();
 
@@ -190,7 +201,7 @@ const Mindzy = forwardRef(
                   {t("resultado")}
                 </h3>
                 <div className="prose prose-invert prose-lg max-w-none text-gray-300">
-                  <ReactMarkdown>{answer}</ReactMarkdown>
+                  <ReactMarkdown>{displayAnswer}</ReactMarkdown>
                 </div>
               </div>
             </div>

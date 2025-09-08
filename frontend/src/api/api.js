@@ -34,16 +34,6 @@ export const getHistory = async () => {
   }
 };
 
-export const saveHistory = async (topic, answer) => {
-  try {
-    const response = await apiClient.post("/mindzy/history", { topic, answer });
-    return response.data;
-  } catch (error) {
-    console.error("Erro ao salvar no histórico:", error);
-    throw error;
-  }
-};
-
 export const deleteHistoryItem = async (id) => {
   try {
     await apiClient.delete(`/mindzy/history/${id}`);

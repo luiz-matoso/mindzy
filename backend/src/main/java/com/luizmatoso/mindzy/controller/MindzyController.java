@@ -1,6 +1,7 @@
 package com.luizmatoso.mindzy.controller;
 
 import com.luizmatoso.mindzy.service.AIService;
+import com.luizmatoso.mindzy.service.HistoryService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,13 +13,15 @@ import java.util.Map;
 @RestController
 public class MindzyController {
     private final AIService aiService;
+    private final HistoryService historyService;
 
-    public MindzyController(AIService aiService){
+    public MindzyController(AIService aiService, HistoryService historyService){
         this.aiService = aiService;
+        this.historyService = historyService;
     }
 
     @PostMapping("/education")
-    public Map<String, String> generateFlashcards(@RequestBody Map<String, String> request){
+    public Map<String, String> generateStudy(@RequestBody Map<String, String> request){
         String topic = request.get("question");
 
         String userPrompt = """
@@ -41,7 +44,12 @@ public class MindzyController {
                 ## 4. Flashcards para Memorização
                 (Crie 5 flashcards no formato exato: "P: [Pergunta sobre um ponto chave]\nR: [Resposta direta e curta]")
                 """.formatted(topic);
-        return Map.of("response", aiService.run(userPrompt, "estudos"));
+
+        String aiResponse = aiService.run(userPrompt, "estudos");
+
+        historyService.saveAnswer(topic, aiResponse);
+
+        return Map.of("response", aiResponse);
     }
 
     @PostMapping("/tech")

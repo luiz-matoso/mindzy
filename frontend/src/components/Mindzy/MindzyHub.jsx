@@ -13,6 +13,7 @@ const MindzyHub = () => {
 
   const [answer, setAnswer] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [answerAnimation, setAnswerAnimation] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
@@ -65,6 +66,7 @@ const MindzyHub = () => {
   async function handleSubmit(payload) {
     setIsLoading(true);
     setAnswer("");
+    setAnswerAnimation(true);
 
     const apiFunction = selectedOption?.api;
 
@@ -174,12 +176,14 @@ const MindzyHub = () => {
         isLoading={isLoading}
         selectedOption={selectedOption}
         onOptionSelect={setSelectedOption}
+        answerAnimation={answerAnimation}
       />
 
       <HistorySidebar
         isOpen={isHistoryOpen}
         onClose={() => setIsHistoryOpen(false)}
         onViewItem={(historyItem) => {
+          setAnswerAnimation(false);
           setAnswer(historyItem.answer || historyItem.content);
           setIsHistoryOpen(false);
         }}

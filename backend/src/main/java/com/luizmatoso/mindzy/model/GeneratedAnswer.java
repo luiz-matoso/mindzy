@@ -20,7 +20,7 @@ public class GeneratedAnswer {
     @Column(nullable = false)
     private String topic;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String answer;
 
     @ManyToOne
