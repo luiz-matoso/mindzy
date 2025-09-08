@@ -5,11 +5,14 @@ import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { FaHistory } from "react-icons/fa";
 import HistorySidebar from "../HistorySidebar/HistorySidebar";
+import { useAuth } from "../../context/AuthContext";
 
 const MindzyHub = () => {
   const { t } = useTranslation();
 
   const [activeApp, setActiveApp] = useState("education");
+
+  const { authState } = useAuth();
 
   const [answer, setAnswer] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -129,7 +132,11 @@ const MindzyHub = () => {
 
   return (
     <div className="w-full max-w-[800px] m-auto p-4">
-      <div className="flex justify-center items-center gap-8 mb-2">
+      <div
+        className={`flex justify-center items-center gap-6 ${
+          authState.token ? "ml-16" : "ml-0"
+        } mb-2`}
+      >
         <AppSelector
           appKey="education"
           label=".edu"
@@ -143,29 +150,31 @@ const MindzyHub = () => {
           onClick={() => setActiveApp("tech")}
         />
 
-        <div className="relative flex items-center">
-          <button
-            onClick={() => setIsHistoryOpen(true)}
-            className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-neutral-800"
-            title="Ver Histórico"
-          >
-            <FaHistory size={24} />
-          </button>
+        {authState.token && (
+          <div className="relative flex items-center">
+            <button
+              onClick={() => setIsHistoryOpen(true)}
+              className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-neutral-800"
+              title="Ver Histórico"
+            >
+              <FaHistory size={24} />
+            </button>
 
-          <div
-            className="absolute left-full ml-3 w-[240px] max-w-xs p-3
-               bg-neutral-800 text-white text-sm rounded-xl shadow-lg z-10"
-          >
-            <p className="font-semibold">{t("historicoRespostas")}</p>
-            <p className="text-xs text-neutral-300 mt-1">
-              {t("cliqueAquiRespostas")}
-            </p>
             <div
-              className="absolute top-1/2 -left-1 w-2 h-2 
+              className="absolute left-full ml-3 w-[240px] max-w-xs p-3
+               bg-neutral-800 text-white text-sm rounded-xl shadow-lg z-10"
+            >
+              <p className="font-semibold">{t("historicoRespostas")}</p>
+              <p className="text-xs text-neutral-300 mt-1">
+                {t("cliqueAquiRespostas")}
+              </p>
+              <div
+                className="absolute top-1/2 -left-1 w-2 h-2 
                  bg-neutral-800 transform -translate-y-1/2 rotate-45"
-            ></div>
+              ></div>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       <Mindzy
