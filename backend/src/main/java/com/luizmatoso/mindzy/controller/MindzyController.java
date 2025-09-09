@@ -24,7 +24,7 @@ public class MindzyController {
     public Map<String, String> generateStudy(@RequestBody Map<String, String> request){
         String topic = request.get("question");
 
-        String userPrompt = """
+        String prompt = """
                 Por favor, crie um guia de estudos completo sobre o seguinte tema: **%s**.
 
                 Siga estritamente a estrutura solicitada, usando Markdown.
@@ -45,7 +45,7 @@ public class MindzyController {
                 (Crie 5 flashcards no formato exato: "P: [Pergunta sobre um ponto chave]\nR: [Resposta direta e curta]")
                 """.formatted(topic);
 
-        String aiResponse = aiService.run(userPrompt, "estudos");
+        String aiResponse = aiService.run(prompt, "estudos");
 
         historyService.saveAnswer(topic, aiResponse);
 
@@ -55,9 +55,32 @@ public class MindzyController {
     @PostMapping("/tech")
     public Map<String, String> explainCode(@RequestBody Map<String, String> request) {
         String code = request.get("question");
+
         String prompt = """
-                Explique esse código a seguir com base no seu conhecimento em Python: %s
+                Como um engenheiro sênior, analise o seguinte trecho de código em **Python**.
+                A resposta DEVE ser em PORTUGUES - BRASILEIRO.
+            
+                Siga estritamente esta estrutura de resposta:
+            
+                ## 1. O Que o Código Faz?
+                (Um resumo de alto nível, em um parágrafo, sobre o objetivo principal do código.)
+            
+                ## 2. Análise Detalhada
+                (Uma explicação passo a passo, podendo ser por trechos ou linhas importantes, detalhando a lógica e o fluxo de execução.)
+            
+                ## 3. Boas Práticas e Sugestões de Melhoria
+                (Identifique pontos fortes do código e sugira melhorias de performance, legibilidade ou segurança. Se não houver melhorias óbvias, apenas elogie as boas práticas utilizadas.)
+                
+                Código para análise:
+                ```python
+                **%s**
+                ```
                 """.formatted(code);
-        return Map.of("response", aiService.run(prompt, "codigos"));
+
+        String aiResponse = aiService.run(prompt, "codigos");
+
+        historyService.saveAnswer(code, aiResponse);
+
+        return Map.of("reponse", aiResponse);
     }
 }

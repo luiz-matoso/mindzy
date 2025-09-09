@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Mindzy from "./Mindzy";
-import { analyzeDoc, explainTopic } from "../../api/api";
+import { analyzeDoc, explainCode, explainTopic } from "../../api/api";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { FaHistory } from "react-icons/fa";
@@ -49,6 +49,7 @@ const MindzyHub = () => {
           type: "text",
           placeholder: t("mindzyHub.tech.explain_code.placeholder"),
           description: t("mindzyHub.tech.explain_code.description"),
+          api: explainCode,
         },
         {
           id: "analyze_py",
@@ -186,6 +187,7 @@ const MindzyHub = () => {
         selectedOption={selectedOption}
         onOptionSelect={setSelectedOption}
         answerAnimation={answerAnimation}
+        activeHub={activeApp}
       />
 
       <HistorySidebar

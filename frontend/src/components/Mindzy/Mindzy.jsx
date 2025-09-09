@@ -17,6 +17,7 @@ const Mindzy = forwardRef(
       selectedOption,
       onOptionSelect,
       answerAnimation,
+      activeHub,
     },
     ref
   ) => {
@@ -70,6 +71,14 @@ const Mindzy = forwardRef(
       return null;
     }
 
+    const isCodeOption = activeHub === "tech";
+
+    const classesComGradiente =
+      "w-full p-4 resize-none border-none outline-none placeholder:text-center text-2xl text-center bg-gradient-to-r from-purple-500 via-teal-500 to-red-500 text-transparent bg-clip-text min-h-[40px] max-h-[300px] overflow-y-auto";
+
+    const classesParaCodigo =
+      "w-full p-4 resize-none border-none outline-none placeholder:text-center text-2xl text-gray-400 min-h-[40px] max-h-[300px] overflow-y-auto bg-neutral-900 rounded-3xl";
+
     return (
       <div ref={ref} className="max-w-[800px] m-auto p-4">
         <p className="max-w-xl mx-auto text-gray-400 text-center mb-8 text-lg">
@@ -101,7 +110,9 @@ const Mindzy = forwardRef(
               <div className="bg-neutral-900 rounded-3xl">
                 <textarea
                   ref={textareaRef}
-                  className="w-full p-4 resize-none border-none outline-none placeholder:text-center text-2xl text-center bg-gradient-to-r from-purple-500 via-teal-500 to-red-500 text-transparent bg-clip-text min-h-[40px] max-h-[300px] overflow-y-auto"
+                  className={
+                    isCodeOption ? classesParaCodigo : classesComGradiente
+                  }
                   rows={1}
                   value={inputValue.text}
                   onChange={handleChange}

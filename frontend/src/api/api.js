@@ -71,3 +71,16 @@ export const analyzeDoc = async (file) => {
     toast.error("Houve um erro. Tente novamente mais tarde.");
   }
 };
+
+// Mindzy.TECH
+
+export const explainCode = async (code) => {
+  try {
+    const response = await apiClient.post("/mindzy/tech", {
+      question: code,
+    });
+    return response.data;
+  } catch (error) {
+    toast.error("Houve um erro. Tente novamente mais tarde.");
+  }
+};
