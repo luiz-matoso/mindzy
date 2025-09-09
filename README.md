@@ -1,150 +1,123 @@
 # 🧠 Mindzy - Hub de Assistentes IA
 
-**Mindzy** é uma plataforma web moderna e interativa que centraliza diversas ferramentas de Inteligência Artificial em um "Hub" modular. O projeto utiliza um backend robusto com **Spring Boot** e **Spring AI**, conectando-se a modelos de linguagem locais (LLMs) via **Ollama**, e um frontend dinâmico em **React** com **Tailwind CSS**.
-
-A aplicação oferece soluções especializadas através de "apps", como Educação (`.edu`) e Tecnologia (`.tech`), garantindo uma experiência de usuário fluida, segura, privada e rica em funcionalidades.
+**Mindzy** é uma plataforma web moderna que centraliza diversas ferramentas de Inteligência Artificial em um "Hub" modular. Com um backend robusto em **Spring Boot 3** e um frontend dinâmico em **React**, o projeto se conecta a modelos de linguagem locais (LLMs) via **Ollama**, oferecendo uma experiência fluida, segura e privada.
 
 ---
 
-## ✨ Funcionalidades Principais
+## ✨ Funcionalidades
 
-- ✅ **Sistema Modular:** Arquitetura centrada em "apps" independentes que podem ser facilmente expandidos.
-  - 📚 **Hub de Educação (`.edu`):** Ferramentas para aprendizado, como explicar tópicos complexos e analisar documentos.
-  - 💻 **Hub de Tecnologia (`.tech`):** Ferramentas para desenvolvedores, como explicar trechos de código e analisar arquivos de código-fonte.
-- 🤖 **Integração com LLMs Locais:** Utiliza **Spring AI** para se conectar a modelos como **Gemma** através do **Ollama**, garantindo privacidade e controle total sobre a IA.
-- 👤 **Autenticação Segura:** Sistema completo de registro e login com **Spring Security** e tokens **JWT**, garantindo que cada usuário tenha seu próprio espaço e histórico protegido.
-- 📜 **Histórico Persistente:** Todas as respostas geradas pela IA são salvas no banco de dados e podem ser visualizadas e recarregadas a partir de uma barra lateral.
-- 📄 **Upload de Arquivos:** Capacidade de processar e analisar arquivos `.pdf` enviados pelo usuário.
-- 🌐 **Suporte a Múltiplos Idiomas (i18n):** Estrutura preparada para internacionalização com `react-i18next`.
-- 🚀 **UI Moderna e Responsiva:** Interface construída com **React** e **Tailwind CSS**, focada em uma experiência de usuário limpa, com animações e design totalmente responsivo.
+- **Hubs Modulares (.edu e .tech):** Módulos especializados para Educação (análise de documentos, resumos) e Tecnologia (explicação de código).
+- **IA Local com Spring AI:** Integração com LLMs como Gemma via Ollama, garantindo total privacidade e controle.
+- **Autenticação Segura:** Sistema completo de registro e login com Spring Security e tokens JWT.
+- **Histórico Persistente:** Todas as conversas são salvas e podem ser recarregadas a partir de uma barra lateral.
+- **Análise de Arquivos:** Capacidade de processar e extrair informações de arquivos `.pdf` enviados pelo usuário.
+- **UI Moderna e Responsiva:** Interface construída com **Tailwind CSS**, focada em uma experiência limpa e totalmente responsiva.
 
 ---
 
-## 🎥 Demonstração Visual (placeholder)
+## 🎥 Demonstração Visual
 
-#### Autenticação de Usuário (Login e Registro)
+#### 📄 Análise Inteligente de Documentos (.edu)
 
-#### Hub de Educação em Ação
+Veja o Mindzy processar um arquivo PDF enviado pelo usuário e gerar um material de estudo completo com base no seu conteúdo.
 
-#### Análise de Documentos e Histórico
+#### 💻 Explicação de Código-Fonte (.tech)
+
+Demonstração da capacidade de colar um trecho de código complexo e receber uma análise detalhada, incluindo explicações e sugestões de melhoria.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-### Frontend
-
-- **Framework:** [ReactJS](https://reactjs.org/) (v19)
-- **Estilização:** [Tailwind CSS](https://tailwindcss.com/)
-- **Build Tool:** [Vite](https://vitejs.dev/)
-- **Roteamento:** [React Router DOM](https://reactrouter.com/)
-- **Renderização de Markdown:** [React Markdown](https://github.com/remarkjs/react-markdown)
-- **Cliente HTTP:** [Axios](https://axios-http.com/)
-- **Traduções (i18n):** [react-i18next](https://react.i18next.com/)
-- **Notificações:** [React Toastify](https://fkhadra.github.io/react-toastify/)
-
-### Backend
-
-- **Framework:** [Spring Boot](https://spring.io/projects/spring-boot) (v3)
-- **Linguagem:** [Java](https://www.java.com/) 21
-- **Inteligência Artificial:** [Spring AI](https://spring.io/projects/spring-ai)
-- **LLM Runtime:** [Ollama](https://ollama.com/)
-- **Segurança:** [Spring Security](https://spring.io/projects/spring-security)
-- **Autenticação:** Tokens JWT (JSON Web Tokens)
-- **Acesso a Dados:** [Spring Data JPA](https://spring.io/projects/spring-data-jpa) / [Hibernate](https://hibernate.org/)
-- **Banco de Dados:** PostgreSQL
-- **Envio de E-mails:** Spring Boot Mail Sender
-- **Build Tool:** [Maven](https://maven.apache.org/)
+| Categoria          | Tecnologias Principais                                              |
+| :----------------- | :------------------------------------------------------------------ |
+| **Frontend**       | React 19, Vite, Tailwind CSS, Axios, React Router, React Markdown   |
+| **Backend**        | Java 21, Spring Boot 3, Spring AI, Spring Security, JPA / Hibernate |
+| **Banco de Dados** | PostgreSQL                                                          |
+| **DevOps & IA**    | Maven, Git, Ollama, JWT                                             |
 
 ---
 
-## 🚀 Como Executar o Projeto Localmente
+## 🚀 Executando Localmente
 
-### Pré-requisitos
-
-- **Java Development Kit (JDK)** (versão 21 ou superior)
-- **Maven** 3.9+
-- **Node.js** (versão 18 ou superior) e **npm**
-- **PostgreSQL**
-- **Ollama:** Instale e execute um modelo. Ex: `ollama pull gemma:2b`
-- **Git**
+**Pré-requisitos:** Java 21+, Node.js 18+, Maven, PostgreSQL, Ollama (com um modelo, ex: `ollama pull gemma:2b`) e Git.
 
 ### 1\. Clonar o Repositório
 
 ```bash
-git clone https://github.com/luiz-matoso/mindzy.git
-cd mindzy
+git clone https://github.com/luiz-matoso/mindzy.git && cd mindzy
 ```
 
-### 2\. Configurar e Executar o Backend (Spring Boot)
+### 2\. Configurar o Backend (Spring)
 
-O backend utiliza variáveis de ambiente para gerenciar configurações sensíveis.
+O backend usa `application.properties` para configurações gerais e variáveis de ambiente para dados sensíveis.
 
-**a.** Navegue até a pasta do backend:
+**a.** Crie o arquivo `application.properties` em `backend/src/main/resources/` com o seguinte conteúdo. Ele define as configurações fixas e aponta para as variáveis de ambiente para os dados sensíveis.
 
-```bash
-cd backend
+```properties
+# Nome da aplicação
+spring.application.name=mindzy
+
+# Configurações do Spring AI para Ollama
+spring.ai.ollama.base-url=http://localhost:11434
+spring.ai.ollama.chat.model=gemma:2b
+
+# Configuração do Banco de Dados (lendo de variáveis de ambiente)
+spring.datasource.url=${SPRING_DATASOURCE_URL}
+spring.datasource.username=${SPRING_DATASOURCE_USERNAME}
+spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
+spring.jpa.hibernate.ddl-auto=update
+
+# Segurança com JWT (lendo de variáveis de ambiente)
+security.jwt.secret-key=${JWT_SECRET_KEY}
 ```
 
-**b.** Crie um arquivo `.env` na raiz da pasta `backend` e preencha com suas credenciais. Você pode usar o exemplo abaixo como base.
+**b.** Para os dados sensíveis, você deve configurar as variáveis de ambiente. A forma mais fácil é criar um arquivo `.env` na raiz da pasta `backend` e usar um plugin como **"EnvFile"** na sua IDE (IntelliJ/VS Code).
 
-**`backend/.env.example`**
+**Exemplo de conteúdo para o arquivo `.env`:**
 
 ```env
-# Configuração do Banco de Dados
+# Variáveis para o banco de dados
 SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/mindzy
 SPRING_DATASOURCE_USERNAME=postgres
 SPRING_DATASOURCE_PASSWORD=sua_senha_do_postgres
 
-# Segredo para gerar os tokens JWT (use um valor longo e seguro)
+# Variável para o segredo do JWT
 JWT_SECRET_KEY=segredo_super_forte_e_longo_para_garantir_a_seguranca_dos_tokens
-
-# Configuração de E-mail (usando Gmail como exemplo)
-# E-mail que enviará as notificações
-SUPPORT_EMAIL=seu-email@gmail.com
-# Senha de App gerada pelo Google (não é a senha da sua conta)
-APP_PASSWORD=sua_senha_de_app_do_google
 ```
 
-**Atenção:** Spring Boot não lê arquivos `.env` nativamente. Você precisa carregar essas variáveis no seu ambiente. A forma mais fácil é usar o plugin **"EnvFile"** na sua IDE (IntelliJ ou VS Code) ou exportá-las manualmente no seu terminal.
-
-**c.** Execute a aplicação com Maven:
+**c.** Execute o backend:
 
 ```bash
+# Dentro da pasta /backend
 ./mvnw spring-boot:run
 ```
 
-### 3\. Configurar e Executar o Frontend (React)
+### 3\. Configurar o Frontend (React)
 
-**a.** Em um novo terminal, navegue até a pasta do frontend:
+Em um novo terminal, execute os seguintes passos:
 
 ```bash
-# A partir da raiz do projeto
+# Navegue até a pasta do frontend
 cd frontend
-```
 
-**b.** Instale as dependências:
-
-```bash
+# Instale as dependências
 npm install
 ```
 
-**c.** Crie um arquivo `.env` na raiz da pasta `frontend` para definir a URL da API:
-
-**`frontend/.env`**
+Crie o arquivo `frontend/.env` com a URL da API:
 
 ```env
-# URL base da sua API do backend
 VITE_API_BASE_URL=http://localhost:8080
 ```
 
-**d.** Inicie o servidor de desenvolvimento:
+Finalmente, inicie o servidor de desenvolvimento:
 
 ```bash
 npm run dev
 ```
 
-Após esses passos, o frontend estará acessível em `http://localhost:5173` e o backend em `http://localhost:8080`.
+A aplicação estará disponível em `http://localhost:5173`.
 
 ---
 
