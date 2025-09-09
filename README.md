@@ -19,11 +19,18 @@
 
 #### 📄 Análise Inteligente de Documentos (.edu)
 
-Veja o Mindzy processar um arquivo PDF enviado pelo usuário e gerar um material de estudo completo com base no seu conteúdo.
+> Veja o Mindzy processar um arquivo PDF enviado pelo usuário e gerar um material de estudo completo com base no seu conteúdo.
+
+https://github.com/user-attachments/assets/3b670753-0604-41d0-8906-9ef177288dae
+
 
 #### 💻 Explicação de Código-Fonte (.tech)
 
-Demonstração da capacidade de colar um trecho de código complexo e receber uma análise detalhada, incluindo explicações e sugestões de melhoria.
+> Demonstração da capacidade de colar um trecho de código complexo e receber uma análise detalhada, incluindo explicações e sugestões de melhoria.
+
+https://github.com/user-attachments/assets/ecaae702-34e0-4df2-9fbc-1cba6809028d
+
+
 
 ---
 
