@@ -58,6 +58,21 @@ public class HistoryService {
         return convertToHistoryResponse(savedAnswer);
     }
 
+    public HistoryResponse saveCodeAnswer(String code, String answer) {
+        String topic = "Análise de Código";
+
+        if (code != null && !code.isBlank()) {
+            int maxLength = 60;
+            String snippetPreview = code.trim();
+            if (snippetPreview.length() > maxLength) {
+                snippetPreview = snippetPreview.substring(0, maxLength);
+            }
+            topic += ": " + snippetPreview.replaceAll("\\s+", " ") + "...";
+        }
+
+        return this.saveAnswer(topic, answer);
+    }
+
     public List<HistoryResponse> findHistoryForCurrentUser(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<GeneratedAnswer> historyEntities = generatedAnswerRepository.findByUserOrderByCreatedAtDesc(user);

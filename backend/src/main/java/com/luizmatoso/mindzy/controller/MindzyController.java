@@ -79,8 +79,8 @@ public class MindzyController {
 
         String aiResponse = aiService.run(prompt, "codigos");
 
-        historyService.saveAnswer(code, aiResponse);
+        historyService.saveCodeAnswer(code, aiResponse);
 
-        return Map.of("reponse", aiResponse);
+        return Map.of("response", aiResponse);
     }
 }
